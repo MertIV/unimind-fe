@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -14,31 +15,32 @@ class SignInWidget extends StatefulWidget {
 }
 
 class _SignInWidgetState extends State<SignInWidget> {
-  TextEditingController? emailLoginController;
-  TextEditingController? emailSignupController1;
+  ApiCallResponse? apiResult0l3;
+  TextEditingController? birthdateSignupController;
+  TextEditingController? emailSignupController;
   TextEditingController? phoneSignupController;
-  TextEditingController? emailSignupController2;
-  TextEditingController? emailSignupController3;
+  TextEditingController? nameSignupController;
+  TextEditingController? emailLoginController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    emailLoginController = TextEditingController();
-    emailSignupController1 = TextEditingController();
+    birthdateSignupController = TextEditingController();
+    emailSignupController = TextEditingController();
     phoneSignupController = TextEditingController();
-    emailSignupController2 = TextEditingController();
-    emailSignupController3 = TextEditingController();
+    nameSignupController = TextEditingController();
+    emailLoginController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
-    emailLoginController?.dispose();
-    emailSignupController1?.dispose();
+    birthdateSignupController?.dispose();
+    emailSignupController?.dispose();
     phoneSignupController?.dispose();
-    emailSignupController2?.dispose();
-    emailSignupController3?.dispose();
+    nameSignupController?.dispose();
+    emailLoginController?.dispose();
     super.dispose();
   }
 
@@ -92,12 +94,12 @@ class _SignInWidgetState extends State<SignInWidget> {
                         tabs: [
                           Tab(
                             text: FFLocalizations.of(context).getText(
-                              'r5cmoeuu' /* Sign In */,
+                              'r5cmoeuu' /* Giriş Yap */,
                             ),
                           ),
                           Tab(
                             text: FFLocalizations.of(context).getText(
-                              '03d42a5b' /* Sign Up */,
+                              '03d42a5b' /* Kayıt Ol */,
                             ),
                           ),
                         ],
@@ -174,10 +176,13 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         0, 24, 0, 0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        context.goNamed('HomePage');
+                                        if (Navigator.of(context).canPop()) {
+                                          context.pop();
+                                        }
+                                        context.pushNamed('VerificationPin');
                                       },
                                       text: FFLocalizations.of(context).getText(
-                                        '4atgyycr' /* Sign In */,
+                                        '4atgyycr' /* Giriş Yap */,
                                       ),
                                       options: FFButtonOptions(
                                         width: 230,
@@ -208,7 +213,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             'Button-ForgotPassword pressed ...');
                                       },
                                       text: FFLocalizations.of(context).getText(
-                                        'k75y81ji' /* Forgot Password? */,
+                                        'k75y81ji' /* Şifremi unuttum? */,
                                       ),
                                       options: FFButtonOptions(
                                         width: 170,
@@ -243,7 +248,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                   0, 12, 0, 0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '7417yz0t' /* Or use a social account to log... */,
+                                              '7417yz0t' /* Giriş yapmak için hesaplarınız... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -306,45 +311,27 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             ),
                                           ),
                                         ),
-                                        InkWell(
-                                          onTap: () async {
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
-                                            final user =
-                                                await signInWithFacebook(
-                                                    context);
-                                            if (user == null) {
-                                              return;
-                                            }
-
-                                            context.goNamedAuth(
-                                                'HomePage', mounted);
-                                          },
-                                          child: Container(
-                                            width: 50,
-                                            height: 50,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 5,
-                                                  color: Color(0x3314181B),
-                                                  offset: Offset(0, 2),
-                                                )
-                                              ],
-                                              shape: BoxShape.circle,
-                                            ),
-                                            alignment:
-                                                AlignmentDirectional(0, 0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.facebookF,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              size: 24,
-                                            ),
+                                        Container(
+                                          width: 50,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 5,
+                                                color: Color(0x3314181B),
+                                                offset: Offset(0, 2),
+                                              )
+                                            ],
+                                            shape: BoxShape.circle,
+                                          ),
+                                          alignment: AlignmentDirectional(0, 0),
+                                          child: FaIcon(
+                                            FontAwesomeIcons.facebookF,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            size: 24,
                                           ),
                                         ),
                                       ],
@@ -363,7 +350,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15, 0, 15, 10),
                                     child: TextFormField(
-                                      controller: emailSignupController1,
+                                      controller: emailSignupController,
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -427,7 +414,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       decoration: InputDecoration(
                                         hintText:
                                             FFLocalizations.of(context).getText(
-                                          'dk6cd156' /* Phone number */,
+                                          'dk6cd156' /* Telefon numarası */,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
@@ -479,13 +466,13 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15, 10, 15, 10),
                                     child: TextFormField(
-                                      controller: emailSignupController2,
+                                      controller: nameSignupController,
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText:
                                             FFLocalizations.of(context).getText(
-                                          'qssyomas' /* Full Name */,
+                                          'qssyomas' /* Ad Soyad */,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
@@ -537,13 +524,13 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15, 10, 15, 0),
                                     child: TextFormField(
-                                      controller: emailSignupController3,
+                                      controller: birthdateSignupController,
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText:
                                             FFLocalizations.of(context).getText(
-                                          'j3lo4tob' /* Birthdate (DD/MM/YYYY) */,
+                                          'j3lo4tob' /* Doğum Tarihi (GG/AA/YYYY) */,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
@@ -596,10 +583,23 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         0, 24, 0, 0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        context.goNamed('HomePage');
+                                        apiResult0l3 =
+                                            await RegisterUserCall.call(
+                                          email:
+                                              birthdateSignupController!.text,
+                                          phone: phoneSignupController!.text,
+                                          name: nameSignupController!.text,
+                                          birthdate:
+                                              birthdateSignupController!.text,
+                                        );
+                                        if ((apiResult0l3?.succeeded ?? true)) {
+                                          context.pushNamed('VerificationPin');
+                                        }
+
+                                        setState(() {});
                                       },
                                       text: FFLocalizations.of(context).getText(
-                                        'i2ifjsod' /* Create Account */,
+                                        'i2ifjsod' /* Hesap Oluştur */,
                                       ),
                                       options: FFButtonOptions(
                                         width: 230,
@@ -635,7 +635,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                   0, 12, 0, 0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '86kuk8ql' /* Or use a social account to sig... */,
+                                              '86kuk8ql' /* Kayıt olmak için hesaplarınızı... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -698,45 +698,27 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             ),
                                           ),
                                         ),
-                                        InkWell(
-                                          onTap: () async {
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
-                                            final user =
-                                                await signInWithFacebook(
-                                                    context);
-                                            if (user == null) {
-                                              return;
-                                            }
-
-                                            context.goNamedAuth(
-                                                'HomePage', mounted);
-                                          },
-                                          child: Container(
-                                            width: 50,
-                                            height: 50,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 5,
-                                                  color: Color(0x3314181B),
-                                                  offset: Offset(0, 2),
-                                                )
-                                              ],
-                                              shape: BoxShape.circle,
-                                            ),
-                                            alignment:
-                                                AlignmentDirectional(0, 0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.facebookF,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              size: 24,
-                                            ),
+                                        Container(
+                                          width: 50,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 5,
+                                                color: Color(0x3314181B),
+                                                offset: Offset(0, 2),
+                                              )
+                                            ],
+                                            shape: BoxShape.circle,
+                                          ),
+                                          alignment: AlignmentDirectional(0, 0),
+                                          child: FaIcon(
+                                            FontAwesomeIcons.facebookF,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            size: 24,
                                           ),
                                         ),
                                       ],

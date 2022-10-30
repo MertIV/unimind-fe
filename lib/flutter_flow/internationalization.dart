@@ -59,22 +59,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'tr': 'Önerilen Seanslar',
       'en': 'Suggested Sessions',
     },
-    't51iozsw': {
-      'tr': '[Appointment Type]',
-      'en': '[Appointment Type]',
-    },
-    '9bc6s1iv': {
-      'tr': '[Appointment Type]',
-      'en': '[Appointment Type]',
-    },
-    '1u2jbucc': {
-      'tr': '[date_time]',
-      'en': '[date_time]',
-    },
-    'tyizfs8v': {
-      'tr': '[jm]',
-      'en': '[jm]',
-    },
     'arsy35hh': {
       'tr': '[Appointment Type]',
       'en': '[Appointment Type]',
@@ -174,29 +158,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // meetings
   {
-    'dug3p6se': {
-      'tr': 'Gelecek Seanslar',
-      'en': 'Incoming Seasons',
-    },
-    'l24h44x7': {
-      'tr': '[Appointment Type]',
-      'en': '[Appointment Type]',
-    },
-    'qi5a4dqq': {
-      'tr': '[display_name]',
-      'en': '[display_name]',
-    },
-    'g0pf7fuy': {
-      'tr': '[date_time]',
-      'en': '[date_time]',
-    },
-    '9wepfb3i': {
-      'tr': 'Hello World',
-      'en': 'Hello World',
-    },
     'hheoqsxl': {
       'tr': 'Seanslarım',
       'en': 'Sessions',
+    },
+    'nf6bg8ki': {
+      'tr': 'Gelecek Seanslar',
+      'en': 'Incoming Seasons',
+    },
+    '90x12bg8': {
+      'tr': '[Appointment Type]',
+      'en': '[Appointment Type]',
+    },
+    'egaueuh7': {
+      'tr': '[display_name]',
+      'en': '[display_name]',
+    },
+    'ipv2r8w1': {
+      'tr': '[date_time]',
+      'en': '[date_time]',
+    },
+    'q5qabyt5': {
+      'tr': 'Hello World',
+      'en': 'Hello World',
     },
     'sjezk0vo': {
       'tr': 'Takvim',
@@ -279,51 +263,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Chat
   {
-    'fvlvh9f4': {
-      'tr': 'Grup 1',
-      'en': 'Grup 1',
-    },
-    '86232n5p': {
-      'tr': 'Dün',
-      'en': 'Yesterday',
-    },
-    'a11da2or': {
-      'tr':
-          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
-      'en':
-          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
-    },
-    'efci6j97': {
-      'tr': 'Grup 2',
-      'en': 'Grup 2',
-    },
-    'xja6lwjd': {
-      'tr': '14:12',
-      'en': '14:12',
-    },
-    'bycgwcib': {
-      'tr':
-          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
-      'en':
-          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
-    },
-    'op02av2h': {
-      'tr': 'Grup 3',
-      'en': 'Grup 3',
-    },
-    'r2j5tb2x': {
-      'tr': '11:03',
-      'en': '11:03',
-    },
-    '5sr4uxkz': {
-      'tr':
-          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
-      'en':
-          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
-    },
     'nfyhke7b': {
       'tr': 'Chat',
       'en': 'Chat',
+    },
+    'cz55x4nu': {
+      'tr': 'Grup 2',
+      'en': 'Grup 2',
+    },
+    '4fpg4yxz': {
+      'tr': '14:12',
+      'en': '14:12',
+    },
+    'r3uqgpzu': {
+      'tr':
+          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
+      'en':
+          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
+    },
+    '3j5smu9z': {
+      'tr': 'Grup 3',
+      'en': 'Grup 3',
+    },
+    'ph7ijsdt': {
+      'tr': '11:03',
+      'en': '11:03',
+    },
+    'wsikuaby': {
+      'tr':
+          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
+      'en':
+          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
     },
     '01dxamek': {
       'tr': 'Chat',
@@ -412,14 +382,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'tr': 'Ödeme Seçenekleri',
       'en': 'Payment Options',
     },
-    'iir7y6j1': {
-      'tr': 'Kart Adı Girin',
-      'en': 'Enter Card Name',
-    },
-    'g9rg4ww7': {
-      'tr': 'Adınız',
-      'en': 'Your Name',
-    },
     'acb1s3zd': {
       'tr': 'Kart Ekle',
       'en': 'Add Cart',
@@ -437,58 +399,188 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'tbmktfz6': {
       'tr': 'unimind',
-      'en': '',
+      'en': 'unimind',
     },
     'r5cmoeuu': {
-      'tr': 'Sign In',
-      'en': '',
+      'tr': 'Giriş Yap',
+      'en': 'Sign In',
     },
     '8sie394b': {
       'tr': 'E-mail',
-      'en': '',
+      'en': 'E-mail',
     },
     '4atgyycr': {
-      'tr': 'Sign In',
-      'en': '',
+      'tr': 'Giriş Yap',
+      'en': 'Sign In',
     },
     'k75y81ji': {
-      'tr': 'Forgot Password?',
-      'en': '',
+      'tr': 'Şifremi unuttum?',
+      'en': 'Forgot Password?',
     },
     '7417yz0t': {
-      'tr': 'Or use a social account to login',
-      'en': '',
+      'tr': 'Giriş yapmak için hesaplarınızı kullanın',
+      'en': 'Or use a social account to login',
     },
     '03d42a5b': {
-      'tr': 'Sign Up',
-      'en': '',
+      'tr': 'Kayıt Ol',
+      'en': 'Sign Up',
     },
     'k0hvjvvw': {
       'tr': 'E-mail',
-      'en': '',
+      'en': 'E-mail',
     },
     'dk6cd156': {
-      'tr': 'Phone number',
-      'en': '',
+      'tr': 'Telefon numarası',
+      'en': 'Phone number',
     },
     'qssyomas': {
-      'tr': 'Full Name',
-      'en': '',
+      'tr': 'Ad Soyad',
+      'en': 'Full Name',
     },
     'j3lo4tob': {
-      'tr': 'Birthdate (DD/MM/YYYY)',
-      'en': '',
+      'tr': 'Doğum Tarihi (GG/AA/YYYY)',
+      'en': 'Birthdate (DD/MM/YYYY)',
     },
     'i2ifjsod': {
-      'tr': 'Create Account',
-      'en': '',
+      'tr': 'Hesap Oluştur',
+      'en': 'Create Account',
     },
     '86kuk8ql': {
-      'tr': 'Or use a social account to sign-up',
-      'en': '',
+      'tr': 'Kayıt olmak için hesaplarınızı kullanın',
+      'en': 'Or use a social account to sign-up',
     },
     'q7rz4jd3': {
       'tr': 'Home',
+      'en': 'Home',
+    },
+  },
+  // CreditCardForm
+  {
+    'uwvv7oer': {
+      'tr': 'Kart Adı Girin',
+      'en': 'Enter Card Name',
+    },
+    'jk56txxg': {
+      'tr': 'Adınız',
+      'en': 'Your Name',
+    },
+  },
+  // ChatCard
+  {
+    '00087ugp': {
+      'tr': 'Grup 1',
+      'en': 'Grup 1',
+    },
+    'y7apor0v': {
+      'tr': 'Dün',
+      'en': 'Yesterday',
+    },
+    'd5t1uyyw': {
+      'tr':
+          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
+      'en':
+          'Client Acquisition for ddfgdfgdf dfgdfg dfgdfgdfg dfggfgdf dfgfgfg dfgdf dfgdfgdfg. fggdfg dfgdfg',
+    },
+  },
+  // SessionCard
+  {
+    'jjdxqbq7': {
+      'tr': '[Appointment Type]',
+      'en': '[Appointment Type]',
+    },
+    '04twg4ue': {
+      'tr': '[Appointment Type]',
+      'en': '[Appointment Type]',
+    },
+    '5zifoa8c': {
+      'tr': '[date_time]',
+      'en': '[date_time]',
+    },
+    'tl2auzom': {
+      'tr': '[jm]',
+      'en': '[jm]',
+    },
+  },
+  // Miscellaneous
+  {
+    '3ffcrbp4': {
+      'tr': '',
+      'en': '',
+    },
+    'zjdr95sf': {
+      'tr': '',
+      'en': '',
+    },
+    '0vayum3j': {
+      'tr': '',
+      'en': '',
+    },
+    'ofahxq8b': {
+      'tr': '',
+      'en': '',
+    },
+    'z8zobu81': {
+      'tr': '',
+      'en': '',
+    },
+    'r5dj3f07': {
+      'tr': '',
+      'en': '',
+    },
+    'ngu0z4ve': {
+      'tr': '',
+      'en': '',
+    },
+    'uvym5ugy': {
+      'tr': '',
+      'en': '',
+    },
+    'uawv5gnv': {
+      'tr': '',
+      'en': '',
+    },
+    '4g1905k8': {
+      'tr': '',
+      'en': '',
+    },
+    '4lgj4c6e': {
+      'tr': '',
+      'en': '',
+    },
+    'blzai109': {
+      'tr': '',
+      'en': '',
+    },
+    '0egni4zx': {
+      'tr': '',
+      'en': '',
+    },
+    'pcyijqul': {
+      'tr': '',
+      'en': '',
+    },
+    '9ux59k1f': {
+      'tr': '',
+      'en': '',
+    },
+    'w3eilpqv': {
+      'tr': '',
+      'en': '',
+    },
+    'bvihjtfp': {
+      'tr': '',
+      'en': '',
+    },
+    'ogmhi6z3': {
+      'tr': '',
+      'en': '',
+    },
+    'heh73pww': {
+      'tr': '',
+      'en': '',
+    },
+    '8imvi0vw': {
+      'tr': '',
       'en': '',
     },
   },

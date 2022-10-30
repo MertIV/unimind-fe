@@ -56,184 +56,199 @@ class _MeetingsWidgetState extends State<MeetingsWidget> {
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 5,
-                          color: Color(0x230E151B),
-                          offset: Offset(0, 2),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: FlutterFlowCalendar(
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      iconColor: FlutterFlowTheme.of(context).primaryColor,
-                      weekFormat: false,
-                      weekStartsMonday: false,
-                      rowHeight: 40,
-                      onChange: (DateTimeRange? newSelectedDate) {
-                        setState(() => calendarSelectedDay = newSelectedDate);
-                      },
-                      titleStyle: FlutterFlowTheme.of(context).bodyText1,
-                      dayOfWeekStyle: TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
-                      dateStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                      selectedDateStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                      inactiveDateStyle: TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
-                      locale: FFLocalizations.of(context).languageCode,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 5),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      'dug3p6se' /* Gelecek Seanslar */,
-                    ),
-                    style: FlutterFlowTheme.of(context).subtitle1,
-                  ),
-                ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  primary: false,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
+                      padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
                       child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 115,
+                        width: double.infinity,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 4,
+                              blurRadius: 5,
                               color: Color(0x230E151B),
                               offset: Offset(0, 2),
                             )
                           ],
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Padding(
+                        child: FlutterFlowCalendar(
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          iconColor: FlutterFlowTheme.of(context).primaryColor,
+                          weekFormat: false,
+                          weekStartsMonday: false,
+                          rowHeight: 43,
+                          onChange: (DateTimeRange? newSelectedDate) {
+                            setState(
+                                () => calendarSelectedDay = newSelectedDate);
+                          },
+                          titleStyle: FlutterFlowTheme.of(context).bodyText1,
+                          dayOfWeekStyle: TextStyle(
+                            fontWeight: FontWeight.w600,
+                          ),
+                          dateStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          selectedDateStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          inactiveDateStyle: TextStyle(
+                            fontWeight: FontWeight.w600,
+                          ),
+                          locale: FFLocalizations.of(context).languageCode,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 5),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'nf6bg8ki' /* Gelecek Seanslar */,
+                        ),
+                        style: FlutterFlowTheme.of(context).subtitle1,
+                      ),
+                    ),
+                    ListView(
+                      padding: EdgeInsets.zero,
+                      primary: false,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        Padding(
                           padding:
-                              EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
+                              EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 115,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 4,
+                                  color: Color(0x230E151B),
+                                  offset: Offset(0, 2),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12, 12, 12, 12),
+                              child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  4, 0, 0, 0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '90x12bg8' /* [Appointment Type] */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .title3,
+                                          ),
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.chevron_right_rounded,
+                                        color: Colors.black,
+                                        size: 24,
+                                      ),
+                                    ],
+                                  ),
                                   Expanded(
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          4, 0, 0, 0),
+                                          4, 4, 4, 0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'l24h44x7' /* [Appointment Type] */,
+                                          'egaueuh7' /* [display_name] */,
                                         ),
-                                        style:
-                                            FlutterFlowTheme.of(context).title3,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFF6AD1FF),
+                                            ),
                                       ),
                                     ),
                                   ),
-                                  Icon(
-                                    Icons.chevron_right_rounded,
-                                    color: Colors.black,
-                                    size: 24,
-                                  ),
-                                ],
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4, 4, 4, 0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'qi5a4dqq' /* [display_name] */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF6AD1FF),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                         ),
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Container(
-                                    height: 32,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8, 0, 16, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8, 4, 0, 4),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'g0pf7fuy' /* [date_time] */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8, 0, 16, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(8, 4, 0, 4),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'ipv2r8w1' /* [date_time] */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyText1,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4, 0, 0, 0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '9wepfb3i' /* Hello World */,
+                                                ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(4, 0, 0, 0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'q5qabyt5' /* Hello World */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyText2,
-                                            ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
                                 ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),

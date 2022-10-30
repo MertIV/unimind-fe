@@ -120,8 +120,8 @@ class _VerificationPinWidgetState extends State<VerificationPinWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 44),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  context.pushNamed('HomePage');
                 },
                 text: FFLocalizations.of(context).getText(
                   'jrfu90a8' /* Doğrula & Devam et */,
