@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "290067497230",
+    "project_id": "unimind-13215",
+    "storage_bucket": "unimind-13215.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290067497230:android:7fa63cac82396a8599d75f",
+        "android_client_info": {
+          "package_name": "com.unimind.unimindflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290067497230-aiu2qbiru50lna1v8ulkdr0jt4tqtsko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unimind.unimindflutter",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "290067497230-o1csvp1oj9a5j8co2sr4r94vlitiqrvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHXqLjeGwvLKXcqiAP_HdY5egu6f3Ru0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "290067497230-o1csvp1oj9a5j8co2sr4r94vlitiqrvq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "290067497230-4hh8au3l4plujl8sbjdens4085acoh9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.unimind.unimindflutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
