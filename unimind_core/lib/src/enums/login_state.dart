@@ -1,0 +1,1 @@
+enum LoginState { NOT_STARTED, LOGGING, LOGGED, FAILED }
