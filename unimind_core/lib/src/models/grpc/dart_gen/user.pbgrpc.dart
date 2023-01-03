@@ -3,7 +3,7 @@
 //  source: user.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -83,6 +83,10 @@ abstract class LoginServiceBase extends $grpc.Service {
 }
 
 class UserServiceClient extends $grpc.Client {
+  static final _$getByID = $grpc.ClientMethod<$1.IdRequest, $0.User>(
+      '/UserService/GetByID',
+      ($1.IdRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.User.fromBuffer(value));
   static final _$register =
       $grpc.ClientMethod<$0.UserRequest, $0.LoginResponse>(
           '/UserService/Register',
@@ -94,6 +98,14 @@ class UserServiceClient extends $grpc.Client {
           ($0.VerificationRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.VerificationResponse.fromBuffer(value));
+  static final _$update = $grpc.ClientMethod<$0.UserRequest, $0.User>(
+      '/UserService/Update',
+      ($0.UserRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.User.fromBuffer(value));
+  static final _$delete = $grpc.ClientMethod<$1.IdRequest, $1.StringResponse>(
+      '/UserService/Delete',
+      ($1.IdRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.StringResponse.fromBuffer(value));
   static final _$archive = $grpc.ClientMethod<$1.IdRequest, $1.StringResponse>(
       '/UserService/Archive',
       ($1.IdRequest value) => value.writeToBuffer(),
@@ -108,6 +120,11 @@ class UserServiceClient extends $grpc.Client {
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
+  $grpc.ResponseFuture<$0.User> getByID($1.IdRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getByID, request, options: options);
+  }
+
   $grpc.ResponseFuture<$0.LoginResponse> register($0.UserRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$register, request, options: options);
@@ -117,6 +134,16 @@ class UserServiceClient extends $grpc.Client {
       $0.VerificationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$registerVerification, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.User> update($0.UserRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$update, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.StringResponse> delete($1.IdRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delete, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.StringResponse> archive($1.IdRequest request,
@@ -134,6 +161,13 @@ abstract class UserServiceBase extends $grpc.Service {
   $core.String get $name => 'UserService';
 
   UserServiceBase() {
+    $addMethod($grpc.ServiceMethod<$1.IdRequest, $0.User>(
+        'GetByID',
+        getByID_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.IdRequest.fromBuffer(value),
+        ($0.User value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.UserRequest, $0.LoginResponse>(
         'Register',
         register_Pre,
@@ -150,6 +184,20 @@ abstract class UserServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $0.VerificationRequest.fromBuffer(value),
             ($0.VerificationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.UserRequest, $0.User>(
+        'Update',
+        update_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.UserRequest.fromBuffer(value),
+        ($0.User value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.IdRequest, $1.StringResponse>(
+        'Delete',
+        delete_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.IdRequest.fromBuffer(value),
+        ($1.StringResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.IdRequest, $1.StringResponse>(
         'Archive',
         archive_Pre,
@@ -166,6 +214,11 @@ abstract class UserServiceBase extends $grpc.Service {
         ($1.StringResponse value) => value.writeToBuffer()));
   }
 
+  $async.Future<$0.User> getByID_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.IdRequest> request) async {
+    return getByID(call, await request);
+  }
+
   $async.Future<$0.LoginResponse> register_Pre(
       $grpc.ServiceCall call, $async.Future<$0.UserRequest> request) async {
     return register(call, await request);
@@ -175,6 +228,16 @@ abstract class UserServiceBase extends $grpc.Service {
       $grpc.ServiceCall call,
       $async.Future<$0.VerificationRequest> request) async {
     return registerVerification(call, await request);
+  }
+
+  $async.Future<$0.User> update_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.UserRequest> request) async {
+    return update(call, await request);
+  }
+
+  $async.Future<$1.StringResponse> delete_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.IdRequest> request) async {
+    return delete(call, await request);
   }
 
   $async.Future<$1.StringResponse> archive_Pre(
@@ -187,10 +250,14 @@ abstract class UserServiceBase extends $grpc.Service {
     return recover(call, await request);
   }
 
+  $async.Future<$0.User> getByID($grpc.ServiceCall call, $1.IdRequest request);
   $async.Future<$0.LoginResponse> register(
       $grpc.ServiceCall call, $0.UserRequest request);
   $async.Future<$0.VerificationResponse> registerVerification(
       $grpc.ServiceCall call, $0.VerificationRequest request);
+  $async.Future<$0.User> update($grpc.ServiceCall call, $0.UserRequest request);
+  $async.Future<$1.StringResponse> delete(
+      $grpc.ServiceCall call, $1.IdRequest request);
   $async.Future<$1.StringResponse> archive(
       $grpc.ServiceCall call, $1.IdRequest request);
   $async.Future<$1.StringResponse> recover(

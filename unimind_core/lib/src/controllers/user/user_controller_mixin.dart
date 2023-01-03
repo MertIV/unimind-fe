@@ -11,7 +11,8 @@ mixin UserControllerMixin {
   }
 
   void runFilter() {
-    filteredListX.value = userListX.value.filterByFilterText(text: filterTextX.value);
+    filteredListX.value =
+        userListX.value.filterByFilterText(text: filterTextX.value);
   }
 
   void setList(List<User> list) {
@@ -20,7 +21,8 @@ mixin UserControllerMixin {
 
   void addOrUpdate({required User user}) {
     var newUserList = List<User>.from(userListX.value);
-    int userIndex = newUserList.indexWhere((element) => element.id == user.id);
+    int userIndex =
+        newUserList.indexWhere((element) => element.userId == user.userId);
 
     if (userIndex == -1) {
       newUserList.add(user);
@@ -33,7 +35,7 @@ mixin UserControllerMixin {
 
   void delete({required User user}) {
     var newUserList = List<User>.from(userListX.value);
-    newUserList.removeWhere((element) => element.id == user.id);
+    newUserList.removeWhere((element) => element.userId == user.userId);
     userListX.value = newUserList;
   }
 }

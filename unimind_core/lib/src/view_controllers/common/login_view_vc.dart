@@ -19,9 +19,7 @@ class LoginViewVC extends GetxController {
   void onInit() {
     super.onInit();
     usernameController =
-        TextEditingController(text: loginController.userX.value.username);
-    passwordController =
-        TextEditingController(text: loginController.userX.value.password);
+        TextEditingController(text: loginController.userX.value.email);
     loginController.getPreferences(
       usernameController: usernameController,
       passwordController: passwordController,

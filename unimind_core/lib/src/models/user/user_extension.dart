@@ -1,5 +1,6 @@
 import 'package:unimind_core/src/controllers/_controller_import.dart';
 import 'package:fixnum/fixnum.dart';
+import 'package:unimind_core/src/models/grpc/dart_gen/google/protobuf/timestamp.pb.dart';
 
 extension UserExtension on User {
   User initial() {
@@ -9,35 +10,24 @@ extension UserExtension on User {
   void preCreateProcessor({
     required UserType userType,
   }) {
-    this..userType = userType;
+    this..type = userType;
   }
 
-  DateTime get createdAtDateAsDateTime => DateTime.fromMillisecondsSinceEpoch(
-        this.createdAt.toInt(),
-      );
-  DateTime get updatedAtDateAsDateTime => DateTime.fromMillisecondsSinceEpoch(
-        this.updatedAt.toInt(),
-      );
-  DateTime get expirationDateAsDateTime => DateTime.fromMillisecondsSinceEpoch(
-        this.expirationDate.toInt(),
-      );
+  DateTime get createdAtDateAsDateTime => this.createdAt.toDateTime();
+  DateTime get updatedAtDateAsDateTime => this.updatedAt.toDateTime();
 
   set toCreatedAtDate(DateTime date) {
-    this.createdAt = Int64(date.millisecondsSinceEpoch);
+    this.createdAt = Int64(date.millisecondsSinceEpoch) as Timestamp;
   }
 
   set toUpdatedAtDate(DateTime date) {
-    this.updatedAt = Int64(date.millisecondsSinceEpoch);
-  }
-
-  set toExpirationDate(DateTime date) {
-    this.expirationDate = Int64(date.millisecondsSinceEpoch);
+    this.updatedAt = Int64(date.millisecondsSinceEpoch) as Timestamp;
   }
 
   String userTypeTurkishString() {
-    switch (this.userType) {
-      case UserType.DOCTOR:
-        return "Doktor";
+    switch (this.type) {
+      case UserType.PSYCHIATRIST:
+        return "Psikolog";
       case UserType.PATIENT:
         return "Hasta";
       default:

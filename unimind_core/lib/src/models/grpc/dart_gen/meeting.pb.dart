@@ -3,13 +3,14 @@
 //  source: meeting.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/timestamp.pb.dart' as $6;
+import 'user.pb.dart' as $0;
 
 class Meeting extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Meeting', createEmptyInstance: create)
@@ -24,7 +25,7 @@ class Meeting extends $pb.GeneratedMessage {
     ..aOM<$6.Timestamp>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime', subBuilder: $6.Timestamp.create)
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'topic')
     ..a<$core.int>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OU3)
-    ..aOM<Consultant>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consultant', subBuilder: Consultant.create)
+    ..aOM<Consultant>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'host', subBuilder: Consultant.create)
     ..hasRequiredFields = false
   ;
 
@@ -41,7 +42,7 @@ class Meeting extends $pb.GeneratedMessage {
     $6.Timestamp? startTime,
     $core.String? topic,
     $core.int? type,
-    Consultant? consultant,
+    Consultant? host,
   }) {
     final _result = create();
     if (id != null) {
@@ -77,8 +78,8 @@ class Meeting extends $pb.GeneratedMessage {
     if (type != null) {
       _result.type = type;
     }
-    if (consultant != null) {
-      _result.consultant = consultant;
+    if (host != null) {
+      _result.host = host;
     }
     return _result;
   }
@@ -209,15 +210,15 @@ class Meeting extends $pb.GeneratedMessage {
   void clearType() => clearField(11);
 
   @$pb.TagNumber(12)
-  Consultant get consultant => $_getN(11);
+  Consultant get host => $_getN(11);
   @$pb.TagNumber(12)
-  set consultant(Consultant v) { setField(12, v); }
+  set host(Consultant v) { setField(12, v); }
   @$pb.TagNumber(12)
-  $core.bool hasConsultant() => $_has(11);
+  $core.bool hasHost() => $_has(11);
   @$pb.TagNumber(12)
-  void clearConsultant() => clearField(12);
+  void clearHost() => clearField(12);
   @$pb.TagNumber(12)
-  Consultant ensureConsultant() => $_ensure(11);
+  Consultant ensureHost() => $_ensure(11);
 }
 
 class Recurrence extends $pb.GeneratedMessage {
@@ -369,7 +370,7 @@ class Recurrence extends $pb.GeneratedMessage {
 
 class Settings extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Settings', createEmptyInstance: create)
-    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'additionalDataCenterRegions')
+    ..aOM<additional_data_center_regions>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'additionalDataCenterRegions', subBuilder: additional_data_center_regions.create)
     ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'approvalType', $pb.PbFieldType.OU3)
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'autoRecording')
     ..hasRequiredFields = false
@@ -377,13 +378,13 @@ class Settings extends $pb.GeneratedMessage {
 
   Settings._() : super();
   factory Settings({
-    $core.Iterable<$core.String>? additionalDataCenterRegions,
+    additional_data_center_regions? additionalDataCenterRegions,
     $core.int? approvalType,
     $core.String? autoRecording,
   }) {
     final _result = create();
     if (additionalDataCenterRegions != null) {
-      _result.additionalDataCenterRegions.addAll(additionalDataCenterRegions);
+      _result.additionalDataCenterRegions = additionalDataCenterRegions;
     }
     if (approvalType != null) {
       _result.approvalType = approvalType;
@@ -415,7 +416,15 @@ class Settings extends $pb.GeneratedMessage {
   static Settings? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.String> get additionalDataCenterRegions => $_getList(0);
+  additional_data_center_regions get additionalDataCenterRegions => $_getN(0);
+  @$pb.TagNumber(1)
+  set additionalDataCenterRegions(additional_data_center_regions v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAdditionalDataCenterRegions() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAdditionalDataCenterRegions() => clearField(1);
+  @$pb.TagNumber(1)
+  additional_data_center_regions ensureAdditionalDataCenterRegions() => $_ensure(0);
 
   @$pb.TagNumber(5)
   $core.int get approvalType => $_getIZ(1);
@@ -434,6 +443,47 @@ class Settings extends $pb.GeneratedMessage {
   $core.bool hasAutoRecording() => $_has(2);
   @$pb.TagNumber(11)
   void clearAutoRecording() => clearField(11);
+}
+
+class additional_data_center_regions extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'additional_data_center_regions', createEmptyInstance: create)
+    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'list')
+    ..hasRequiredFields = false
+  ;
+
+  additional_data_center_regions._() : super();
+  factory additional_data_center_regions({
+    $core.Iterable<$core.String>? list,
+  }) {
+    final _result = create();
+    if (list != null) {
+      _result.list.addAll(list);
+    }
+    return _result;
+  }
+  factory additional_data_center_regions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory additional_data_center_regions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  additional_data_center_regions clone() => additional_data_center_regions()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  additional_data_center_regions copyWith(void Function(additional_data_center_regions) updates) => super.copyWith((message) => updates(message as additional_data_center_regions)) as additional_data_center_regions; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static additional_data_center_regions create() => additional_data_center_regions._();
+  additional_data_center_regions createEmptyInstance() => create();
+  static $pb.PbList<additional_data_center_regions> createRepeated() => $pb.PbList<additional_data_center_regions>();
+  @$core.pragma('dart2js:noInline')
+  static additional_data_center_regions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<additional_data_center_regions>(create);
+  static additional_data_center_regions? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get list => $_getList(0);
 }
 
 class Consultant extends $pb.GeneratedMessage {
@@ -572,5 +622,95 @@ class MeetingRequest extends $pb.GeneratedMessage {
   void clearMeeting() => clearField(1);
   @$pb.TagNumber(1)
   Meeting ensureMeeting() => $_ensure(0);
+}
+
+class MeetingListResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MeetingListResponse', createEmptyInstance: create)
+    ..pc<Meeting>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'list', $pb.PbFieldType.PM, subBuilder: Meeting.create)
+    ..hasRequiredFields = false
+  ;
+
+  MeetingListResponse._() : super();
+  factory MeetingListResponse({
+    $core.Iterable<Meeting>? list,
+  }) {
+    final _result = create();
+    if (list != null) {
+      _result.list.addAll(list);
+    }
+    return _result;
+  }
+  factory MeetingListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MeetingListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MeetingListResponse clone() => MeetingListResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MeetingListResponse copyWith(void Function(MeetingListResponse) updates) => super.copyWith((message) => updates(message as MeetingListResponse)) as MeetingListResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MeetingListResponse create() => MeetingListResponse._();
+  MeetingListResponse createEmptyInstance() => create();
+  static $pb.PbList<MeetingListResponse> createRepeated() => $pb.PbList<MeetingListResponse>();
+  @$core.pragma('dart2js:noInline')
+  static MeetingListResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MeetingListResponse>(create);
+  static MeetingListResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Meeting> get list => $_getList(0);
+}
+
+class TestResultRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TestResultRequest', createEmptyInstance: create)
+    ..aOM<$0.user_metadata>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userMetadata', subBuilder: $0.user_metadata.create)
+    ..hasRequiredFields = false
+  ;
+
+  TestResultRequest._() : super();
+  factory TestResultRequest({
+    $0.user_metadata? userMetadata,
+  }) {
+    final _result = create();
+    if (userMetadata != null) {
+      _result.userMetadata = userMetadata;
+    }
+    return _result;
+  }
+  factory TestResultRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TestResultRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  TestResultRequest clone() => TestResultRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  TestResultRequest copyWith(void Function(TestResultRequest) updates) => super.copyWith((message) => updates(message as TestResultRequest)) as TestResultRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static TestResultRequest create() => TestResultRequest._();
+  TestResultRequest createEmptyInstance() => create();
+  static $pb.PbList<TestResultRequest> createRepeated() => $pb.PbList<TestResultRequest>();
+  @$core.pragma('dart2js:noInline')
+  static TestResultRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TestResultRequest>(create);
+  static TestResultRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.user_metadata get userMetadata => $_getN(0);
+  @$pb.TagNumber(1)
+  set userMetadata($0.user_metadata v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserMetadata() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserMetadata() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.user_metadata ensureUserMetadata() => $_ensure(0);
 }
 

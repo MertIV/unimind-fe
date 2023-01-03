@@ -3,7 +3,7 @@
 //  source: user.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
@@ -23,37 +23,71 @@ final $typed_data.Uint8List userTypeDescriptor = $convert.base64Decode('CghVc2Vy
 const User$json = const {
   '1': 'User',
   '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    const {'1': 'email', '3': 2, '4': 1, '5': 9, '10': 'email'},
-    const {'1': 'phone', '3': 3, '4': 1, '5': 9, '10': 'phone'},
-    const {'1': 'payment_info_id_list', '3': 4, '4': 3, '5': 9, '10': 'paymentInfoIdList'},
-    const {'1': 'fullname', '3': 5, '4': 1, '5': 9, '10': 'fullname'},
-    const {'1': 'birth_date', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'birthDate'},
-    const {'1': 'type', '3': 7, '4': 1, '5': 14, '6': '.UserType', '10': 'type'},
-    const {'1': 'user_metadata', '3': 8, '4': 3, '5': 11, '6': '.Question', '10': 'userMetadata'},
-    const {'1': 'created_at', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'updated_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
-    const {'1': 'is_archived', '3': 11, '4': 1, '5': 8, '10': 'isArchived'},
+    const {'1': 'user_id', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'userId', '17': true},
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 1, '10': 'email', '17': true},
+    const {'1': 'phone', '3': 3, '4': 1, '5': 9, '9': 2, '10': 'phone', '17': true},
+    const {'1': 'payment_info_id_list', '3': 4, '4': 1, '5': 11, '6': '.payment_info_id_list', '9': 3, '10': 'paymentInfoIdList', '17': true},
+    const {'1': 'fullname', '3': 5, '4': 1, '5': 9, '9': 4, '10': 'fullname', '17': true},
+    const {'1': 'birth_date', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 5, '10': 'birthDate', '17': true},
+    const {'1': 'type', '3': 7, '4': 1, '5': 14, '6': '.UserType', '9': 6, '10': 'type', '17': true},
+    const {'1': 'user_metadata', '3': 8, '4': 1, '5': 11, '6': '.user_metadata', '9': 7, '10': 'userMetadata', '17': true},
+    const {'1': 'created_at', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 8, '10': 'createdAt', '17': true},
+    const {'1': 'updated_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 9, '10': 'updatedAt', '17': true},
+    const {'1': 'is_archived', '3': 11, '4': 1, '5': 8, '9': 10, '10': 'isArchived', '17': true},
+  ],
+  '8': const [
+    const {'1': '_user_id'},
+    const {'1': '_email'},
+    const {'1': '_phone'},
+    const {'1': '_payment_info_id_list'},
+    const {'1': '_fullname'},
+    const {'1': '_birth_date'},
+    const {'1': '_type'},
+    const {'1': '_user_metadata'},
+    const {'1': '_created_at'},
+    const {'1': '_updated_at'},
+    const {'1': '_is_archived'},
   ],
 };
 
 /// Descriptor for `User`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userDescriptor = $convert.base64Decode('CgRVc2VyEg4KAmlkGAEgASgJUgJpZBIUCgVlbWFpbBgCIAEoCVIFZW1haWwSFAoFcGhvbmUYAyABKAlSBXBob25lEi8KFHBheW1lbnRfaW5mb19pZF9saXN0GAQgAygJUhFwYXltZW50SW5mb0lkTGlzdBIaCghmdWxsbmFtZRgFIAEoCVIIZnVsbG5hbWUSOQoKYmlydGhfZGF0ZRgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCWJpcnRoRGF0ZRIdCgR0eXBlGAcgASgOMgkuVXNlclR5cGVSBHR5cGUSLgoNdXNlcl9tZXRhZGF0YRgIIAMoCzIJLlF1ZXN0aW9uUgx1c2VyTWV0YWRhdGESOQoKY3JlYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJdXBkYXRlZEF0Eh8KC2lzX2FyY2hpdmVkGAsgASgIUgppc0FyY2hpdmVk');
+final $typed_data.Uint8List userDescriptor = $convert.base64Decode('CgRVc2VyEhwKB3VzZXJfaWQYASABKAlIAFIGdXNlcklkiAEBEhkKBWVtYWlsGAIgASgJSAFSBWVtYWlsiAEBEhkKBXBob25lGAMgASgJSAJSBXBob25liAEBEksKFHBheW1lbnRfaW5mb19pZF9saXN0GAQgASgLMhUucGF5bWVudF9pbmZvX2lkX2xpc3RIA1IRcGF5bWVudEluZm9JZExpc3SIAQESHwoIZnVsbG5hbWUYBSABKAlIBFIIZnVsbG5hbWWIAQESPgoKYmlydGhfZGF0ZRgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIBVIJYmlydGhEYXRliAEBEiIKBHR5cGUYByABKA4yCS5Vc2VyVHlwZUgGUgR0eXBliAEBEjgKDXVzZXJfbWV0YWRhdGEYCCABKAsyDi51c2VyX21ldGFkYXRhSAdSDHVzZXJNZXRhZGF0YYgBARI+CgpjcmVhdGVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgIUgljcmVhdGVkQXSIAQESPgoKdXBkYXRlZF9hdBgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBICVIJdXBkYXRlZEF0iAEBEiQKC2lzX2FyY2hpdmVkGAsgASgISApSCmlzQXJjaGl2ZWSIAQFCCgoIX3VzZXJfaWRCCAoGX2VtYWlsQggKBl9waG9uZUIXChVfcGF5bWVudF9pbmZvX2lkX2xpc3RCCwoJX2Z1bGxuYW1lQg0KC19iaXJ0aF9kYXRlQgcKBV90eXBlQhAKDl91c2VyX21ldGFkYXRhQg0KC19jcmVhdGVkX2F0Qg0KC191cGRhdGVkX2F0Qg4KDF9pc19hcmNoaXZlZA==');
+@$core.Deprecated('Use user_metadataDescriptor instead')
+const user_metadata$json = const {
+  '1': 'user_metadata',
+  '2': const [
+    const {'1': 'list', '3': 8, '4': 3, '5': 11, '6': '.Question', '10': 'list'},
+  ],
+};
+
+/// Descriptor for `user_metadata`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List user_metadataDescriptor = $convert.base64Decode('Cg11c2VyX21ldGFkYXRhEh0KBGxpc3QYCCADKAsyCS5RdWVzdGlvblIEbGlzdA==');
+@$core.Deprecated('Use payment_info_id_listDescriptor instead')
+const payment_info_id_list$json = const {
+  '1': 'payment_info_id_list',
+  '2': const [
+    const {'1': 'list', '3': 1, '4': 3, '5': 9, '10': 'list'},
+  ],
+};
+
+/// Descriptor for `payment_info_id_list`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List payment_info_id_listDescriptor = $convert.base64Decode('ChRwYXltZW50X2luZm9faWRfbGlzdBISCgRsaXN0GAEgAygJUgRsaXN0');
 @$core.Deprecated('Use questionDescriptor instead')
 const Question$json = const {
   '1': 'Question',
   '2': const [
-    const {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
+    const {'1': 'title', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'title', '17': true},
     const {'1': 'options', '3': 2, '4': 3, '5': 9, '10': 'options'},
-    const {'1': 'selected_answer', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'selectedAnswer', '17': true},
+    const {'1': 'selected_answer', '3': 3, '4': 1, '5': 9, '9': 1, '10': 'selectedAnswer', '17': true},
   ],
   '8': const [
+    const {'1': '_title'},
     const {'1': '_selected_answer'},
   ],
 };
 
 /// Descriptor for `Question`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List questionDescriptor = $convert.base64Decode('CghRdWVzdGlvbhIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSGAoHb3B0aW9ucxgCIAMoCVIHb3B0aW9ucxIsCg9zZWxlY3RlZF9hbnN3ZXIYAyABKAlIAFIOc2VsZWN0ZWRBbnN3ZXKIAQFCEgoQX3NlbGVjdGVkX2Fuc3dlcg==');
+final $typed_data.Uint8List questionDescriptor = $convert.base64Decode('CghRdWVzdGlvbhIZCgV0aXRsZRgBIAEoCUgAUgV0aXRsZYgBARIYCgdvcHRpb25zGAIgAygJUgdvcHRpb25zEiwKD3NlbGVjdGVkX2Fuc3dlchgDIAEoCUgBUg5zZWxlY3RlZEFuc3dlcogBAUIICgZfdGl0bGVCEgoQX3NlbGVjdGVkX2Fuc3dlcg==');
 @$core.Deprecated('Use userRequestDescriptor instead')
 const UserRequest$json = const {
   '1': 'UserRequest',

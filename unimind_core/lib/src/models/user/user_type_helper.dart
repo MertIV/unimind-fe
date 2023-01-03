@@ -7,8 +7,8 @@ class UserTypeHelper {
 
   static String getTurkishString(UserType userType) {
     switch (userType) {
-      case UserType.DOCTOR:
-        return "Doktor";
+      case UserType.PSYCHIATRIST:
+        return "Psikolog";
 
       case UserType.PATIENT:
         return "Hasta";

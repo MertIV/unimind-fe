@@ -3,7 +3,7 @@
 //  source: device_info.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
@@ -12,18 +12,19 @@ import 'dart:typed_data' as $typed_data;
 const DeviceInfo$json = const {
   '1': 'DeviceInfo',
   '2': const [
-    const {'1': 'device_id', '3': 1, '4': 1, '5': 9, '10': 'deviceId'},
-    const {'1': 'user_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'userId', '17': true},
-    const {'1': 'last_login', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 1, '10': 'lastLogin', '17': true},
+    const {'1': 'device_id', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'deviceId', '17': true},
+    const {'1': 'user_id', '3': 2, '4': 1, '5': 9, '9': 1, '10': 'userId', '17': true},
+    const {'1': 'last_login', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 2, '10': 'lastLogin', '17': true},
   ],
   '8': const [
+    const {'1': '_device_id'},
     const {'1': '_user_id'},
     const {'1': '_last_login'},
   ],
 };
 
 /// Descriptor for `DeviceInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List deviceInfoDescriptor = $convert.base64Decode('CgpEZXZpY2VJbmZvEhsKCWRldmljZV9pZBgBIAEoCVIIZGV2aWNlSWQSHAoHdXNlcl9pZBgCIAEoCUgAUgZ1c2VySWSIAQESPgoKbGFzdF9sb2dpbhgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAVIJbGFzdExvZ2luiAEBQgoKCF91c2VyX2lkQg0KC19sYXN0X2xvZ2lu');
+final $typed_data.Uint8List deviceInfoDescriptor = $convert.base64Decode('CgpEZXZpY2VJbmZvEiAKCWRldmljZV9pZBgBIAEoCUgAUghkZXZpY2VJZIgBARIcCgd1c2VyX2lkGAIgASgJSAFSBnVzZXJJZIgBARI+CgpsYXN0X2xvZ2luGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgCUglsYXN0TG9naW6IAQFCDAoKX2RldmljZV9pZEIKCghfdXNlcl9pZEINCgtfbGFzdF9sb2dpbg==');
 @$core.Deprecated('Use deviceInfoRequestDescriptor instead')
 const DeviceInfoRequest$json = const {
   '1': 'DeviceInfoRequest',
