@@ -363,6 +363,67 @@ class Question extends $pb.GeneratedMessage {
   void clearSelectedAnswer() => clearField(3);
 }
 
+class FcmToken extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FcmToken', createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fcmToken')
+    ..hasRequiredFields = false
+  ;
+
+  FcmToken._() : super();
+  factory FcmToken({
+    $core.String? deviceId,
+    $core.String? fcmToken,
+  }) {
+    final _result = create();
+    if (deviceId != null) {
+      _result.deviceId = deviceId;
+    }
+    if (fcmToken != null) {
+      _result.fcmToken = fcmToken;
+    }
+    return _result;
+  }
+  factory FcmToken.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FcmToken.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FcmToken clone() => FcmToken()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FcmToken copyWith(void Function(FcmToken) updates) => super.copyWith((message) => updates(message as FcmToken)) as FcmToken; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FcmToken create() => FcmToken._();
+  FcmToken createEmptyInstance() => create();
+  static $pb.PbList<FcmToken> createRepeated() => $pb.PbList<FcmToken>();
+  @$core.pragma('dart2js:noInline')
+  static FcmToken getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FcmToken>(create);
+  static FcmToken? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get deviceId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set deviceId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDeviceId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDeviceId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get fcmToken => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set fcmToken($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFcmToken() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFcmToken() => clearField(2);
+}
+
 class UserRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserRequest', createEmptyInstance: create)
     ..aOM<User>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'user', subBuilder: User.create)
@@ -682,5 +743,68 @@ class VerificationResponse extends $pb.GeneratedMessage {
   $core.bool hasError() => $_has(1);
   @$pb.TagNumber(2)
   void clearError() => clearField(2);
+}
+
+class FcmTokenRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FcmTokenRequest', createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId')
+    ..aOM<FcmToken>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fcmToken', protoName: 'fcmToken', subBuilder: FcmToken.create)
+    ..hasRequiredFields = false
+  ;
+
+  FcmTokenRequest._() : super();
+  factory FcmTokenRequest({
+    $core.String? userId,
+    FcmToken? fcmToken,
+  }) {
+    final _result = create();
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    if (fcmToken != null) {
+      _result.fcmToken = fcmToken;
+    }
+    return _result;
+  }
+  factory FcmTokenRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FcmTokenRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FcmTokenRequest clone() => FcmTokenRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FcmTokenRequest copyWith(void Function(FcmTokenRequest) updates) => super.copyWith((message) => updates(message as FcmTokenRequest)) as FcmTokenRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FcmTokenRequest create() => FcmTokenRequest._();
+  FcmTokenRequest createEmptyInstance() => create();
+  static $pb.PbList<FcmTokenRequest> createRepeated() => $pb.PbList<FcmTokenRequest>();
+  @$core.pragma('dart2js:noInline')
+  static FcmTokenRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FcmTokenRequest>(create);
+  static FcmTokenRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  FcmToken get fcmToken => $_getN(1);
+  @$pb.TagNumber(2)
+  set fcmToken(FcmToken v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFcmToken() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFcmToken() => clearField(2);
+  @$pb.TagNumber(2)
+  FcmToken ensureFcmToken() => $_ensure(1);
 }
 

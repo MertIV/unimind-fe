@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:library/library.dart';
 
-class Settings {
+class AppSettings {
   num sessionMoney;
   Color notArrivedColor;
   Color? arrivedColor;
@@ -12,7 +12,7 @@ class Settings {
   List<int> nonWorkingDays;
   int doctorProgramHeight;
   bool isClockHalfStart;
-  Settings({
+  AppSettings({
     required this.sessionMoney,
     required this.notArrivedColor,
     required this.arrivedColor,
@@ -24,7 +24,7 @@ class Settings {
     required this.isClockHalfStart,
   });
 
-  Settings copyWith({
+  AppSettings copyWith({
     num? sessionMoney,
     Color? notArrivedColor,
     Color? arrivedColor,
@@ -36,7 +36,7 @@ class Settings {
     int? doctorProgramHeight,
     bool? isClockHalfStart,
   }) {
-    return Settings(
+    return AppSettings(
       sessionMoney: sessionMoney ?? this.sessionMoney,
       notArrivedColor: notArrivedColor ?? this.notArrivedColor,
       arrivedColor: arrivedColor ?? this.arrivedColor,
@@ -49,7 +49,7 @@ class Settings {
     );
   }
 
-  bool isSame(Settings settings) {
+  bool isSame(AppSettings settings) {
     return this.sessionMoney == settings.sessionMoney &&
         this.notArrivedColor == settings.notArrivedColor &&
         this.arrivedColor == settings.arrivedColor &&
@@ -61,7 +61,7 @@ class Settings {
         this.isClockHalfStart == settings.isClockHalfStart;
   }
 
-  factory Settings.initial({
+  factory AppSettings.initial({
     num? sessionMoney,
     num? notArrivedColor,
     num? arrivedColor,
@@ -73,7 +73,7 @@ class Settings {
     int? doctorProgramHeight,
     bool? isClockHalfStart,
   }) {
-    return Settings(
+    return AppSettings(
       sessionMoney: sessionMoney ?? 150,
       notArrivedColor: notArrivedColor as Color? ?? Colors.redAccent,
       arrivedColor: arrivedColor as Color? ?? Colors.green[300],
@@ -100,9 +100,9 @@ class Settings {
     };
   }
 
-  factory Settings.fromMap(Map<String, dynamic> map) {
+  factory AppSettings.fromMap(Map<String, dynamic> map) {
     try {
-      return Settings(
+      return AppSettings(
         sessionMoney: map['sessionMoney'] ?? 150,
         notArrivedColor: (map['notArrivedColor'] as String?)?.stringToColor ??
             Colors.redAccent,
@@ -116,14 +116,14 @@ class Settings {
         isClockHalfStart: map['isClockHalfStart'] ?? false,
       );
     } catch (e) {
-      return Settings.initial();
+      return AppSettings.initial();
     }
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Settings.fromJson(String source) =>
-      Settings.fromMap(json.decode(source));
+  factory AppSettings.fromJson(String source) =>
+      AppSettings.fromMap(json.decode(source));
 
   @override
   String toString() =>
@@ -133,7 +133,7 @@ class Settings {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Settings &&
+    return other is AppSettings &&
         other.sessionMoney == sessionMoney &&
         other.notArrivedColor == notArrivedColor &&
         other.arrivedColor == arrivedColor &&

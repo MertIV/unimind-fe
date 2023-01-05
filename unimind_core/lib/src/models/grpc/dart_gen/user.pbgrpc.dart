@@ -114,6 +114,11 @@ class UserServiceClient extends $grpc.Client {
       '/UserService/Recover',
       ($1.IdRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.StringResponse.fromBuffer(value));
+  static final _$setFcmToken =
+      $grpc.ClientMethod<$0.FcmTokenRequest, $1.StringResponse>(
+          '/UserService/SetFcmToken',
+          ($0.FcmTokenRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.StringResponse.fromBuffer(value));
 
   UserServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -154,6 +159,12 @@ class UserServiceClient extends $grpc.Client {
   $grpc.ResponseFuture<$1.StringResponse> recover($1.IdRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$recover, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.StringResponse> setFcmToken(
+      $0.FcmTokenRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setFcmToken, request, options: options);
   }
 }
 
@@ -212,6 +223,13 @@ abstract class UserServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.IdRequest.fromBuffer(value),
         ($1.StringResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.FcmTokenRequest, $1.StringResponse>(
+        'SetFcmToken',
+        setFcmToken_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.FcmTokenRequest.fromBuffer(value),
+        ($1.StringResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.User> getByID_Pre(
@@ -250,6 +268,11 @@ abstract class UserServiceBase extends $grpc.Service {
     return recover(call, await request);
   }
 
+  $async.Future<$1.StringResponse> setFcmToken_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.FcmTokenRequest> request) async {
+    return setFcmToken(call, await request);
+  }
+
   $async.Future<$0.User> getByID($grpc.ServiceCall call, $1.IdRequest request);
   $async.Future<$0.LoginResponse> register(
       $grpc.ServiceCall call, $0.UserRequest request);
@@ -262,4 +285,6 @@ abstract class UserServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $1.IdRequest request);
   $async.Future<$1.StringResponse> recover(
       $grpc.ServiceCall call, $1.IdRequest request);
+  $async.Future<$1.StringResponse> setFcmToken(
+      $grpc.ServiceCall call, $0.FcmTokenRequest request);
 }

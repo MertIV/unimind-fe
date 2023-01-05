@@ -43,11 +43,11 @@ class PushNotificationController extends GetxController {
   Future<void> setFcmTokenThunk() async {
     try {
       LoginController loginController = Get.find();
-      if (loginController.userX.value.id.isEmpty) {
+      if (loginController.userX.value.userId.isEmpty) {
         return;
       }
       var fcmTokenRequest = FcmTokenRequest(
-        userId: loginController.userX.value.id,
+        userId: loginController.userX.value.userId,
         fcmToken: FcmToken(
           deviceId: await PlatformDeviceId.getDeviceId,
           fcmToken: fcmToken,

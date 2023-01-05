@@ -21,8 +21,8 @@ class LoginViewVC extends GetxController {
     usernameController =
         TextEditingController(text: loginController.userX.value.email);
     loginController.getPreferences(
-      usernameController: usernameController,
-      passwordController: passwordController,
+      emailController: usernameController,
+      phoneController: passwordController,
     );
   }
 

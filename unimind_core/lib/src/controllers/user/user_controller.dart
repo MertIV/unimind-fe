@@ -7,7 +7,6 @@ import 'user_controller_mixin.dart';
 
 class UserController extends GetxController with UserControllerMixin {
   var userServiceClient = UserServiceClient(GrpcClientSingleton().client);
-  late ResponseStream<User> getAllResponseStream;
 
   @override
   void onInit() {
@@ -18,20 +17,6 @@ class UserController extends GetxController with UserControllerMixin {
       runFilter();
     });
     super.onInit();
-  }
-
-  void getAllThunk() {
-    try {
-      getAllResponseStream = userServiceClient.getAll(
-        Empty(),
-        options: CallOptions(
-          metadata: ServerConfig.metadata,
-        ),
-      );
-      getAllResponseStream.listen((user) {
-        addOrUpdate(user: user);
-      });
-    } catch (e) {}
   }
 
   Future<void> getByIdThunk({required String id}) async {
@@ -46,44 +31,43 @@ class UserController extends GetxController with UserControllerMixin {
     } catch (e) {}
   }
 
-  Future<String> existByEmailThunk({required String email}) async {
+  Future<String> registerVerificationEmailThunk({required String email}) async {
     try {
-      StringResponse response = await userServiceClient.existByEmail(
-        StringRequest()..data = email,
-        options: CallOptions(
-          metadata: ServerConfig.metadata,
-        ),
-      );
-      return response.data;
+      VerificationResponse response = await userServiceClient
+          .registerVerification(VerificationRequest()..email = email);
+      return response.token;
     } catch (e) {
       return "Email ile eşleşen kullanıcı bulunamadı!";
     }
   }
 
-  Future<void> createThunk({
+  Future<String> registerVerificationPhoneThunk({required String phone}) async {
+    try {
+      VerificationResponse response = await userServiceClient
+          .registerVerification(VerificationRequest()..phone = phone);
+      return response.token;
+    } catch (e) {
+      return "Telefon ile eşleşen kullanıcı bulunamadı!";
+    }
+  }
+
+  Future<void> registerThunk({
     required User user,
-    required Patient patient,
-    Function(User)? onSuccess,
+    Function(String)? onSuccess,
     Function(String?)? onError,
     bool isSavePreference = true,
   }) async {
     try {
       User reqUser = user.deepCopy();
-      User response = await userServiceClient.create(
-        UserPatientRequest()
-          ..user = reqUser
-          ..patient = patient,
-        options: CallOptions(
-          metadata: ServerConfig.metadata,
-        ),
-      );
-      addOrUpdate(user: response);
+      LoginResponse response =
+          await userServiceClient.register(UserRequest()..user = reqUser);
+      //addOrUpdate(user: response);
       if (isSavePreference) {
-        savePreferences(user.username, user.password);
+        savePreferences(user.email, user.phone);
       }
-      onSuccess?.call(response);
+      onSuccess?.call(response.message);
     } catch (e) {
-      onError?.call("Error on UserController createThunk");
+      onError?.call("Error on UserController registerThunk");
     }
   }
 
@@ -113,7 +97,7 @@ class UserController extends GetxController with UserControllerMixin {
   }) async {
     try {
       await userServiceClient.delete(
-        IdRequest()..id = user.id,
+        IdRequest()..id = user.userId,
         options: CallOptions(
           metadata: ServerConfig.metadata,
         ),
@@ -125,28 +109,28 @@ class UserController extends GetxController with UserControllerMixin {
     }
   }
 
-  Future<void> forgetPasswordThunk({
-    required String data,
-    Function(String)? onSuccess,
-    Function(String?)? onError,
-  }) async {
-    try {
-      var response = await userServiceClient.forgetPassword(
-        StringRequest()..data = data,
-        options: CallOptions(
-          metadata: ServerConfig.metadata,
-        ),
-      );
-      onSuccess?.call(response.data);
-    } catch (e) {
-      onError?.call("Error on UserController forgetPasswordThunk");
-    }
-  }
+//   Future<void> forgetPasswordThunk({
+//     required String data,
+//     Function(String)? onSuccess,
+//     Function(String?)? onError,
+//   }) async {
+//     try {
+//       var response = await userServiceClient.forgetPassword(
+//         StringRequest()..data = data,
+//         options: CallOptions(
+//           metadata: ServerConfig.metadata,
+//         ),
+//       );
+//       onSuccess?.call(response.data);
+//     } catch (e) {
+//       onError?.call("Error on UserController forgetPasswordThunk");
+//     }
+//   }
 }
 
 void savePreferences(String username, String password) async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  sharedPreferences.setString("username", username);
-  sharedPreferences.setString("password", password);
+  sharedPreferences.setString("email", username);
+  sharedPreferences.setString("phone", password);
   // sharedPreferences.setString("logged", "true");
 }

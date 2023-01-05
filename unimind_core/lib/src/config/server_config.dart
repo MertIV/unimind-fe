@@ -1,5 +1,6 @@
 class ServerConfig {
   static String token = "";
+  static String verificationCode = "";
   static Map<String, String> get metadata {
     return {
       "x-auth-token": token,

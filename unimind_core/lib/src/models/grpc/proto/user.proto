@@ -32,6 +32,12 @@ message Question{
     optional string selected_answer = 3;
 }
 
+message FcmToken{
+    string device_id = 1;
+    string fcm_token = 2;
+}
+
+
 enum UserType{
     PSYCHIATRIST = 0;
     PATIENT = 1;
@@ -63,6 +69,11 @@ message VerificationResponse{
     string error = 2;
 }
 
+message FcmTokenRequest{
+    string user_id = 1;
+    FcmToken fcmToken = 2;
+}
+
 service LoginService{
     rpc Login(LoginRequest) returns (LoginResponse);
     rpc LoginVerification(VerificationRequest) returns (VerificationResponse);
@@ -76,4 +87,5 @@ service UserService{
     rpc Delete(IdRequest) returns (StringResponse);
     rpc Archive(IdRequest) returns (StringResponse);
     rpc Recover(IdRequest) returns (StringResponse);
+    rpc SetFcmToken(FcmTokenRequest) returns (StringResponse);
 }

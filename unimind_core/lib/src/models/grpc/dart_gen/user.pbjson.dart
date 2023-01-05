@@ -88,6 +88,17 @@ const Question$json = const {
 
 /// Descriptor for `Question`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List questionDescriptor = $convert.base64Decode('CghRdWVzdGlvbhIZCgV0aXRsZRgBIAEoCUgAUgV0aXRsZYgBARIYCgdvcHRpb25zGAIgAygJUgdvcHRpb25zEiwKD3NlbGVjdGVkX2Fuc3dlchgDIAEoCUgBUg5zZWxlY3RlZEFuc3dlcogBAUIICgZfdGl0bGVCEgoQX3NlbGVjdGVkX2Fuc3dlcg==');
+@$core.Deprecated('Use fcmTokenDescriptor instead')
+const FcmToken$json = const {
+  '1': 'FcmToken',
+  '2': const [
+    const {'1': 'device_id', '3': 1, '4': 1, '5': 9, '10': 'deviceId'},
+    const {'1': 'fcm_token', '3': 2, '4': 1, '5': 9, '10': 'fcmToken'},
+  ],
+};
+
+/// Descriptor for `FcmToken`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List fcmTokenDescriptor = $convert.base64Decode('CghGY21Ub2tlbhIbCglkZXZpY2VfaWQYASABKAlSCGRldmljZUlkEhsKCWZjbV90b2tlbhgCIAEoCVIIZmNtVG9rZW4=');
 @$core.Deprecated('Use userRequestDescriptor instead')
 const UserRequest$json = const {
   '1': 'UserRequest',
@@ -144,3 +155,14 @@ const VerificationResponse$json = const {
 
 /// Descriptor for `VerificationResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verificationResponseDescriptor = $convert.base64Decode('ChRWZXJpZmljYXRpb25SZXNwb25zZRIUCgV0b2tlbhgBIAEoCVIFdG9rZW4SFAoFZXJyb3IYAiABKAlSBWVycm9y');
+@$core.Deprecated('Use fcmTokenRequestDescriptor instead')
+const FcmTokenRequest$json = const {
+  '1': 'FcmTokenRequest',
+  '2': const [
+    const {'1': 'user_id', '3': 1, '4': 1, '5': 9, '10': 'userId'},
+    const {'1': 'fcmToken', '3': 2, '4': 1, '5': 11, '6': '.FcmToken', '10': 'fcmToken'},
+  ],
+};
+
+/// Descriptor for `FcmTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List fcmTokenRequestDescriptor = $convert.base64Decode('Cg9GY21Ub2tlblJlcXVlc3QSFwoHdXNlcl9pZBgBIAEoCVIGdXNlcklkEiUKCGZjbVRva2VuGAIgASgLMgkuRmNtVG9rZW5SCGZjbVRva2Vu');
