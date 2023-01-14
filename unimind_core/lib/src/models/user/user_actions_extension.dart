@@ -1,4 +1,5 @@
 import 'package:unimind_core/src/controllers/_controller_import.dart';
+import 'package:fixnum/fixnum.dart';
 import 'package:unimind_core/src/models/grpc/dart_gen/google/protobuf/timestamp.pb.dart';
 
 extension UserActionsExtension on User {
@@ -26,8 +27,10 @@ extension UserActionsExtension on User {
     this.type = userType;
   }
 
-  void onBirthdaySelected(Timestamp value) {
-    this.birthDate = value;
+  void onBirthdaySelected(String value) {
+    var tsValue =
+        Timestamp(seconds: Int64(DateTime.parse(value).millisecondsSinceEpoch));
+    this.birthDate = tsValue;
   }
 
   void onUserMetaDataChanged(user_metadata value) {

@@ -7,7 +7,7 @@ class GrpcClientSingleton {
   late ClientChannel client;
   List<int>? certAsList;
   // static const String LOCAL_IP = "192.168.1.33";
-  static const String SERVER_IP = "185.92.1.242";
+  static const String SERVER_IP = "0.0.0.0";
   static final GrpcClientSingleton _singleton =
       new GrpcClientSingleton._internal();
 
@@ -16,14 +16,14 @@ class GrpcClientSingleton {
   GrpcClientSingleton._internal() {
     client = ClientChannel(
       SERVER_IP,
-      port: 50001,
+      port: 4242,
       options: ChannelOptions(
         // credentials: ClientCertificateChannelCredentials(utf8.encode(CertificateConstants.caCert),
         //     utf8.encode(CertificateConstants.caKey), utf8.encode(CertificateConstants.clientCert)),
         credentials: ChannelCredentials.secure(
           certificates: utf8.encode(CertificateConstants.caCert),
           onBadCertificate: (certificate, host) {
-            return host == "$SERVER_IP:50001";
+            return host == "$SERVER_IP:4242";
           },
         ),
         idleTimeout: Duration(minutes: 40),

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
 import 'package:unimind_core/unimind_core.dart';
+import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -28,6 +30,7 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+
   @override
   State<MyApp> createState() => _MyAppState();
 
@@ -38,8 +41,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = ThemeMode.system;
+  ServerController serverController = Get.put(ServerController());
 
-  late Stream<UnimindTestBlankFirebaseUser> userStream;
+  late Stream<User> userStream;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
@@ -49,7 +53,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _appStateNotifier = AppStateNotifier();
     _router = createRouter(_appStateNotifier);
-    userStream = unimindTestBlankFirebaseUserStream()
+    userStream = AuthStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(

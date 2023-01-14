@@ -7,6 +7,5 @@ export 'src/enums/_enum_exporter.dart';
 export 'src/models/_model_exporter.dart';
 
 export 'package:get/get.dart';
-// export 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:library/library.dart';

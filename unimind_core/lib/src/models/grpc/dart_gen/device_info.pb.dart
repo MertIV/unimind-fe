@@ -9,13 +9,13 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $6;
+import 'google/protobuf/timestamp.pb.dart' as $7;
 
 class DeviceInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeviceInfo', createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId')
-    ..aOM<$6.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastLogin', subBuilder: $6.Timestamp.create)
+    ..aOM<$7.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastLogin', subBuilder: $7.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -23,7 +23,7 @@ class DeviceInfo extends $pb.GeneratedMessage {
   factory DeviceInfo({
     $core.String? deviceId,
     $core.String? userId,
-    $6.Timestamp? lastLogin,
+    $7.Timestamp? lastLogin,
   }) {
     final _result = create();
     if (deviceId != null) {
@@ -77,15 +77,15 @@ class DeviceInfo extends $pb.GeneratedMessage {
   void clearUserId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.Timestamp get lastLogin => $_getN(2);
+  $7.Timestamp get lastLogin => $_getN(2);
   @$pb.TagNumber(3)
-  set lastLogin($6.Timestamp v) { setField(3, v); }
+  set lastLogin($7.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasLastLogin() => $_has(2);
   @$pb.TagNumber(3)
   void clearLastLogin() => clearField(3);
   @$pb.TagNumber(3)
-  $6.Timestamp ensureLastLogin() => $_ensure(2);
+  $7.Timestamp ensureLastLogin() => $_ensure(2);
 }
 
 class DeviceInfoRequest extends $pb.GeneratedMessage {

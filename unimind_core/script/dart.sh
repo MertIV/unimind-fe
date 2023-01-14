@@ -7,3 +7,4 @@ protoc --dart_out=grpc:./dart_gen --plugin=protoc-gen-dart=$HOME/.pub-cache/bin/
     ./proto/calendar.proto \
     ./proto/payment_info.proto \
     ./proto/device_info.proto \
+    ./proto/web_socket.proto \

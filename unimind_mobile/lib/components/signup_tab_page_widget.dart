@@ -1,5 +1,4 @@
-import '../auth/auth_util.dart';
-import '../backend/api_requests/api_calls.dart';
+import 'package:unimind_core/unimind_core.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -7,16 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:unimind_mobile/components/snackbar.dart';
 
 class SignupTabPageWidget extends StatefulWidget {
-  const SignupTabPageWidget({Key? key}) : super(key: key);
+  final Function(int)? onNavigate;
+
+  const SignupTabPageWidget({Key? key, this.onNavigate}) : super(key: key);
 
   @override
   _SignupTabPageWidgetState createState() => _SignupTabPageWidgetState();
 }
 
 class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
-  ApiCallResponse? apiResult0l3;
+  // ApiCallResponse? apiResult0l3;
+  UserController userController = Get.find();
+  LoginController loginController = Get.find();
   TextEditingController? birthdateSignupController;
   TextEditingController? emailSignupController;
   TextEditingController? phoneSignupController;
@@ -25,10 +29,14 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
   @override
   void initState() {
     super.initState();
-    birthdateSignupController = TextEditingController();
-    emailSignupController = TextEditingController();
-    phoneSignupController = TextEditingController();
-    nameSignupController = TextEditingController();
+    birthdateSignupController = TextEditingController(
+        text: loginController.signUpUserX.value.birthDate.toString());
+    emailSignupController =
+        TextEditingController(text: loginController.signUpUserX.value.email);
+    phoneSignupController =
+        TextEditingController(text: loginController.signUpUserX.value.phone);
+    nameSignupController =
+        TextEditingController(text: loginController.signUpUserX.value.fullname);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -56,6 +64,9 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
               controller: emailSignupController,
               autofocus: true,
               obscureText: false,
+              onChanged: (value) {
+                loginController.signUpUserX.value.onEmailChanged(value);
+              },
               decoration: InputDecoration(
                 hintText: FFLocalizations.of(context).getText(
                   'hhg5865k' /* E-mail */,
@@ -102,6 +113,9 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
               controller: phoneSignupController,
               autofocus: true,
               obscureText: false,
+              onChanged: (value) {
+                loginController.signUpUserX.value.onPhoneChanged(value);
+              },
               decoration: InputDecoration(
                 hintText: FFLocalizations.of(context).getText(
                   'idmp7i68' /* Telefon numarası */,
@@ -148,6 +162,9 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
               controller: nameSignupController,
               autofocus: true,
               obscureText: false,
+              onChanged: (value) {
+                loginController.signUpUserX.value.onFullnameChanged(value);
+              },
               decoration: InputDecoration(
                 hintText: FFLocalizations.of(context).getText(
                   'xombkwwb' /* Ad Soyad */,
@@ -194,6 +211,9 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
               controller: birthdateSignupController,
               autofocus: true,
               obscureText: false,
+              onChanged: (value) {
+                loginController.signUpUserX.value.onBirthdaySelected(value);
+              },
               decoration: InputDecoration(
                 hintText: FFLocalizations.of(context).getText(
                   '8e0w74ak' /* Doğum Tarihi (GG/AA/YYYY) */,
@@ -236,34 +256,16 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
           ),
           FFButtonWidget(
             onPressed: () async {
-              apiResult0l3 = await RegisterUserCall.call(
-                email: emailSignupController!.text,
-                phone: phoneSignupController!.text,
-                name: nameSignupController!.text,
-                birthdate: birthdateSignupController!.text,
+              _handleSubmit();
+              context.pushNamed(
+                'VerificationPin',
+                queryParams: {
+                  'loginOrRegister': serializeParam(
+                    2.0,
+                    ParamType.double,
+                  ),
+                }.withoutNulls,
               );
-              if ((apiResult0l3?.succeeded ?? true)) {
-                context.pushNamed(
-                  'VerificationPin',
-                  queryParams: {
-                    'loginOrRegister': serializeParam(
-                      2.0,
-                      ParamType.double,
-                    ),
-                  }.withoutNulls,
-                );
-              } else {
-                context.pushNamed(
-                  'VerificationPin',
-                  queryParams: {
-                    'loginOrRegister': serializeParam(
-                      2.0,
-                      ParamType.double,
-                    ),
-                  }.withoutNulls,
-                );
-              }
-
               setState(() {});
             },
             text: FFLocalizations.of(context).getText(
@@ -315,13 +317,13 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
               children: [
                 InkWell(
                   onTap: () async {
-                    GoRouter.of(context).prepareAuthEvent();
-                    final user = await signInWithGoogle(context);
-                    if (user == null) {
-                      return;
-                    }
+                    // GoRouter.of(context).prepareAuthEvent();
+                    // final user = await signInWithGoogle(context);
+                    // if (user == null) {
+                    //   return;
+                    // }
 
-                    context.goNamedAuth('HomePage', mounted);
+                    // context.goNamedAuth('HomePage', mounted);
                   },
                   child: Container(
                     width: 50,
@@ -371,6 +373,23 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
           ),
         ],
       ),
+    );
+  }
+
+  void _handleSubmit() {
+    // Get.dialog(LoadingWidget());
+    userController.registerThunk(
+      user: loginController.signUpUserX.value,
+      onSuccess: (user) {
+        Get.back();
+        widget.onNavigate!(0);
+        callSnackBar("İşlem Başarılı", "Kayıt oldunuz. Giriş yapabilirsiniz",
+            SnackType.POSITIVE);
+      },
+      onError: (message) {
+        Get.back();
+        callSnackBar("İşlem Başarısız", message!, SnackType.NEGATIVE);
+      },
     );
   }
 }

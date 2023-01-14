@@ -5,13 +5,12 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 
-import '../../auth/firebase_user_provider.dart';
-
 import '../../index.dart';
 import '../../main.dart';
 import '../lat_lng.dart';
 import '../place.dart';
 import 'serialization_util.dart';
+import 'package:unimind_core/unimind_core.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -19,8 +18,8 @@ export 'serialization_util.dart';
 const kTransitionInfoKey = '__transition_info__';
 
 class AppStateNotifier extends ChangeNotifier {
-  UnimindTestBlankFirebaseUser? initialUser;
-  UnimindTestBlankFirebaseUser? user;
+  User? initialUser;
+  User? user;
   bool showSplashImage = true;
   String? _redirectLocation;
 
@@ -32,8 +31,8 @@ class AppStateNotifier extends ChangeNotifier {
   bool notifyOnAuthChange = true;
 
   bool get loading => user == null || showSplashImage;
-  bool get loggedIn => user?.loggedIn ?? false;
-  bool get initiallyLoggedIn => initialUser?.loggedIn ?? false;
+  bool get loggedIn => user?.isArchived ?? false;
+  bool get initiallyLoggedIn => initialUser?.isArchived ?? false;
   bool get shouldRedirect => loggedIn && _redirectLocation != null;
 
   String getRedirectLocation() => _redirectLocation!;
@@ -45,7 +44,7 @@ class AppStateNotifier extends ChangeNotifier {
   /// to perform subsequent actions (such as navigation) afterwards.
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
-  void update(UnimindTestBlankFirebaseUser newUser) {
+  void update(User newUser) {
     initialUser ??= newUser;
     user = newUser;
     // Refresh the app on auth change unless explicitly marked otherwise.

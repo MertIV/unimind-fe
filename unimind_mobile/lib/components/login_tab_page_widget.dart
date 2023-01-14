@@ -1,4 +1,3 @@
-import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -249,13 +248,13 @@ class _LoginTabPageWidgetState extends State<LoginTabPageWidget> {
               children: [
                 InkWell(
                   onTap: () async {
-                    GoRouter.of(context).prepareAuthEvent();
-                    final user = await signInWithGoogle(context);
-                    if (user == null) {
-                      return;
-                    }
+                    // GoRouter.of(context).prepareAuthEvent();
+                    // // final user = await signInWithGoogle(context);
+                    // if (user == null) {
+                    //   return;
+                    // }
 
-                    context.goNamedAuth('HomePage', mounted);
+                    // context.goNamedAuth('HomePage', mounted);
                   },
                   child: Container(
                     width: 50,

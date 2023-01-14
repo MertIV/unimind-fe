@@ -26,3 +26,8 @@ export 'dart_gen/user.pb.dart';
 export 'dart_gen/user.pbenum.dart';
 export 'dart_gen/user.pbgrpc.dart';
 export 'dart_gen/user.pbjson.dart';
+
+export 'dart_gen/web_socket.pb.dart';
+export 'dart_gen/web_socket.pbenum.dart';
+export 'dart_gen/web_socket.pbgrpc.dart';
+export 'dart_gen/web_socket.pbjson.dart';

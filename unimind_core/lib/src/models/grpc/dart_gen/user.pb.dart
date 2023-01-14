@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $6;
+import 'google/protobuf/timestamp.pb.dart' as $7;
 
 import 'user.pbenum.dart';
 
@@ -22,11 +22,11 @@ class User extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'phone')
     ..aOM<payment_info_id_list>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paymentInfoIdList', subBuilder: payment_info_id_list.create)
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fullname')
-    ..aOM<$6.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'birthDate', subBuilder: $6.Timestamp.create)
+    ..aOM<$7.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'birthDate', subBuilder: $7.Timestamp.create)
     ..e<UserType>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: UserType.PSYCHIATRIST, valueOf: UserType.valueOf, enumValues: UserType.values)
     ..aOM<user_metadata>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userMetadata', subBuilder: user_metadata.create)
-    ..aOM<$6.Timestamp>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
+    ..aOM<$7.Timestamp>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', subBuilder: $7.Timestamp.create)
+    ..aOM<$7.Timestamp>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', subBuilder: $7.Timestamp.create)
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isArchived')
     ..hasRequiredFields = false
   ;
@@ -38,11 +38,11 @@ class User extends $pb.GeneratedMessage {
     $core.String? phone,
     payment_info_id_list? paymentInfoIdList,
     $core.String? fullname,
-    $6.Timestamp? birthDate,
+    $7.Timestamp? birthDate,
     UserType? type,
     user_metadata? userMetadata,
-    $6.Timestamp? createdAt,
-    $6.Timestamp? updatedAt,
+    $7.Timestamp? createdAt,
+    $7.Timestamp? updatedAt,
     $core.bool? isArchived,
   }) {
     final _result = create();
@@ -150,15 +150,15 @@ class User extends $pb.GeneratedMessage {
   void clearFullname() => clearField(5);
 
   @$pb.TagNumber(6)
-  $6.Timestamp get birthDate => $_getN(5);
+  $7.Timestamp get birthDate => $_getN(5);
   @$pb.TagNumber(6)
-  set birthDate($6.Timestamp v) { setField(6, v); }
+  set birthDate($7.Timestamp v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasBirthDate() => $_has(5);
   @$pb.TagNumber(6)
   void clearBirthDate() => clearField(6);
   @$pb.TagNumber(6)
-  $6.Timestamp ensureBirthDate() => $_ensure(5);
+  $7.Timestamp ensureBirthDate() => $_ensure(5);
 
   @$pb.TagNumber(7)
   UserType get type => $_getN(6);
@@ -181,26 +181,26 @@ class User extends $pb.GeneratedMessage {
   user_metadata ensureUserMetadata() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $6.Timestamp get createdAt => $_getN(8);
+  $7.Timestamp get createdAt => $_getN(8);
   @$pb.TagNumber(9)
-  set createdAt($6.Timestamp v) { setField(9, v); }
+  set createdAt($7.Timestamp v) { setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasCreatedAt() => $_has(8);
   @$pb.TagNumber(9)
   void clearCreatedAt() => clearField(9);
   @$pb.TagNumber(9)
-  $6.Timestamp ensureCreatedAt() => $_ensure(8);
+  $7.Timestamp ensureCreatedAt() => $_ensure(8);
 
   @$pb.TagNumber(10)
-  $6.Timestamp get updatedAt => $_getN(9);
+  $7.Timestamp get updatedAt => $_getN(9);
   @$pb.TagNumber(10)
-  set updatedAt($6.Timestamp v) { setField(10, v); }
+  set updatedAt($7.Timestamp v) { setField(10, v); }
   @$pb.TagNumber(10)
   $core.bool hasUpdatedAt() => $_has(9);
   @$pb.TagNumber(10)
   void clearUpdatedAt() => clearField(10);
   @$pb.TagNumber(10)
-  $6.Timestamp ensureUpdatedAt() => $_ensure(9);
+  $7.Timestamp ensureUpdatedAt() => $_ensure(9);
 
   @$pb.TagNumber(11)
   $core.bool get isArchived => $_getBF(10);

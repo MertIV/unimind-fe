@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $6;
+import 'google/protobuf/timestamp.pb.dart' as $7;
 import 'user.pb.dart' as $0;
 
 class Meeting extends $pb.GeneratedMessage {
@@ -22,7 +22,7 @@ class Meeting extends $pb.GeneratedMessage {
     ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'preSchedule')
     ..aOM<Recurrence>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recurrence', subBuilder: Recurrence.create)
     ..aOM<Settings>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'settings', subBuilder: Settings.create)
-    ..aOM<$6.Timestamp>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime', subBuilder: $6.Timestamp.create)
+    ..aOM<$7.Timestamp>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime', subBuilder: $7.Timestamp.create)
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'topic')
     ..a<$core.int>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OU3)
     ..aOM<Consultant>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'host', subBuilder: Consultant.create)
@@ -39,7 +39,7 @@ class Meeting extends $pb.GeneratedMessage {
     $core.bool? preSchedule,
     Recurrence? recurrence,
     Settings? settings,
-    $6.Timestamp? startTime,
+    $7.Timestamp? startTime,
     $core.String? topic,
     $core.int? type,
     Consultant? host,
@@ -181,15 +181,15 @@ class Meeting extends $pb.GeneratedMessage {
   Settings ensureSettings() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $6.Timestamp get startTime => $_getN(8);
+  $7.Timestamp get startTime => $_getN(8);
   @$pb.TagNumber(9)
-  set startTime($6.Timestamp v) { setField(9, v); }
+  set startTime($7.Timestamp v) { setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasStartTime() => $_has(8);
   @$pb.TagNumber(9)
   void clearStartTime() => clearField(9);
   @$pb.TagNumber(9)
-  $6.Timestamp ensureStartTime() => $_ensure(8);
+  $7.Timestamp ensureStartTime() => $_ensure(8);
 
   @$pb.TagNumber(10)
   $core.String get topic => $_getSZ(9);
@@ -223,7 +223,7 @@ class Meeting extends $pb.GeneratedMessage {
 
 class Recurrence extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Recurrence', createEmptyInstance: create)
-    ..aOM<$6.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endDateTime', subBuilder: $6.Timestamp.create)
+    ..aOM<$7.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endDateTime', subBuilder: $7.Timestamp.create)
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTimes', $pb.PbFieldType.OU3)
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'monthlyDay', $pb.PbFieldType.OU3)
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'monthlyWeek', $pb.PbFieldType.OU3)
@@ -236,7 +236,7 @@ class Recurrence extends $pb.GeneratedMessage {
 
   Recurrence._() : super();
   factory Recurrence({
-    $6.Timestamp? endDateTime,
+    $7.Timestamp? endDateTime,
     $core.int? endTimes,
     $core.int? monthlyDay,
     $core.int? monthlyWeek,
@@ -294,15 +294,15 @@ class Recurrence extends $pb.GeneratedMessage {
   static Recurrence? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $6.Timestamp get endDateTime => $_getN(0);
+  $7.Timestamp get endDateTime => $_getN(0);
   @$pb.TagNumber(1)
-  set endDateTime($6.Timestamp v) { setField(1, v); }
+  set endDateTime($7.Timestamp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasEndDateTime() => $_has(0);
   @$pb.TagNumber(1)
   void clearEndDateTime() => clearField(1);
   @$pb.TagNumber(1)
-  $6.Timestamp ensureEndDateTime() => $_ensure(0);
+  $7.Timestamp ensureEndDateTime() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.int get endTimes => $_getIZ(1);

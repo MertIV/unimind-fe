@@ -1,0 +1,68 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "library",
+            "cwd": "library",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "library (profile mode)",
+            "cwd": "library",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "library (release mode)",
+            "cwd": "library",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "unimind_core",
+            "cwd": "unimind_core",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "unimind_core (profile mode)",
+            "cwd": "unimind_core",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "unimind_core (release mode)",
+            "cwd": "unimind_core",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "unimind_mobile",
+            "cwd": "unimind_mobile",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "unimind_mobile (profile mode)",
+            "cwd": "unimind_mobile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "unimind_mobile (release mode)",
+            "cwd": "unimind_mobile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
