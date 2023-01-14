@@ -9,8 +9,8 @@ export 'onboarding/onboarding_widget.dart' show OnboardingWidget;
 export 'questionarre/questionarre_widget.dart' show QuestionarreWidget;
 export 'payment_method_list/payment_method_list_widget.dart'
     show PaymentMethodListWidget;
-export 'sign_in/sign_in_widget.dart' show SignInWidget;
 export 'edit_profile/edit_profile_widget.dart' show EditProfileWidget;
+export 'sign_in/sign_in_widget.dart' show SignInWidget;
 export 'meeting_details/meeting_details_widget.dart' show MeetingDetailsWidget;
 export 'suggested_meetings/suggested_meetings_widget.dart'
     show SuggestedMeetingsWidget;

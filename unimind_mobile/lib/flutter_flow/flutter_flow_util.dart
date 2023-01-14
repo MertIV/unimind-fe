@@ -15,6 +15,7 @@ import 'lat_lng.dart';
 export 'keep_alive_wrapper.dart';
 export 'lat_lng.dart';
 export 'place.dart';
+export 'local_file.dart';
 export '../app_state.dart';
 export 'dart:math' show min, max;
 export 'dart:typed_data' show Uint8List;
@@ -161,6 +162,15 @@ dynamic getJsonField(
   return isForList && value is! Iterable ? [value] : value;
 }
 
+Rect? getWidgetBoundingBox(BuildContext context) {
+  try {
+    final renderBox = context.findRenderObject() as RenderBox?;
+    return renderBox!.localToGlobal(Offset.zero) & renderBox.size;
+  } catch (_) {
+    return null;
+  }
+}
+
 bool get isAndroid => !kIsWeb && Platform.isAndroid;
 bool get isiOS => !kIsWeb && Platform.isIOS;
 bool get isWeb => kIsWeb;
@@ -192,6 +202,14 @@ const kTextValidatorEmailRegex =
     r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
 const kTextValidatorWebsiteRegex =
     r'(https?:\/\/)?(www\.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,10}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)|(https?:\/\/)?(www\.)?(?!ww)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,10}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)';
+
+extension IterableExt<T> on Iterable<T> {
+  List<S> mapIndexed<S>(S Function(int, T) func) => toList()
+      .asMap()
+      .map((index, value) => MapEntry(index, func(index, value)))
+      .values
+      .toList();
+}
 
 void setAppLanguage(BuildContext context, String language) =>
     MyApp.of(context).setLocale(language);
@@ -234,4 +252,8 @@ extension FFStringExt on String {
       maxChars != null && length > maxChars
           ? replaceRange(maxChars, null, replacement)
           : this;
+}
+
+extension ListFilterExt<T> on Iterable<T?> {
+  List<T> get withoutNulls => where((s) => s != null).map((e) => e!).toList();
 }

@@ -27,18 +27,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
-	<array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.290067497230-4hh8au3l4plujl8sbjdens4085acoh9k</string>
-                
-            </array>
-        </dict>
-
-        <dict>
+	<array>        <dict>
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>

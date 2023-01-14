@@ -61,7 +61,9 @@ class _CreditCardFormWidgetState extends State<CreditCardFormWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
             child: InkWell(
               onTap: () async {
-                FFAppState().addToCreditCard(textController2!.text);
+                FFAppState().update(() {
+                  FFAppState().addToCreditCard(textController2!.text);
+                });
               },
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -169,8 +171,10 @@ class _CreditCardFormWidgetState extends State<CreditCardFormWidget> {
                       child: TextFormField(
                         controller: textController2,
                         onFieldSubmitted: (_) async {
-                          FFAppState().CreditCard =
-                              FFAppState().CreditCard.toList();
+                          FFAppState().update(() {
+                            FFAppState().CreditCard =
+                                FFAppState().CreditCard.toList();
+                          });
                         },
                         obscureText: false,
                         decoration: InputDecoration(

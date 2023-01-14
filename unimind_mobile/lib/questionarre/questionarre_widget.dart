@@ -140,8 +140,10 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '0';
-                                        FFAppState().questionIndex = 1;
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '0';
+                                          FFAppState().questionIndex = 1;
+                                        });
                                       },
                                       child: ListTile(
                                         title: Text(
@@ -176,8 +178,10 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '1';
-                                        FFAppState().questionIndex = 1;
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '1';
+                                          FFAppState().questionIndex = 1;
+                                        });
                                       },
                                       child: ListTile(
                                         title: Text(
@@ -212,8 +216,10 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '2';
-                                        FFAppState().questionIndex = 1;
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '2';
+                                          FFAppState().questionIndex = 1;
+                                        });
                                       },
                                       child: ListTile(
                                         title: Text(
@@ -259,7 +265,9 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              FFAppState().questionIndex = 1;
+                              FFAppState().update(() {
+                                FFAppState().questionIndex = 1;
+                              });
                             },
                             text: FFLocalizations.of(context).getText(
                               'wjmiujwr' /* Next Question */,
@@ -366,8 +374,10 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '0';
-                                        FFAppState().questionIndex = 2;
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '0';
+                                          FFAppState().questionIndex = 2;
+                                        });
                                       },
                                       child: ListTile(
                                         title: Text(
@@ -402,8 +412,10 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '1';
-                                        FFAppState().questionIndex = 2;
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '1';
+                                          FFAppState().questionIndex = 2;
+                                        });
                                       },
                                       child: ListTile(
                                         title: Text(
@@ -438,8 +450,10 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '2';
-                                        FFAppState().questionIndex = 2;
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '2';
+                                          FFAppState().questionIndex = 2;
+                                        });
                                       },
                                       child: ListTile(
                                         title: Text(
@@ -485,7 +499,9 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              FFAppState().questionIndex = 2;
+                              FFAppState().update(() {
+                                FFAppState().questionIndex = 2;
+                              });
                             },
                             text: FFLocalizations.of(context).getText(
                               'm65tya49' /* Next Question */,
@@ -526,7 +542,7 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                             alignment: AlignmentDirectional(-1, 0),
                             child: Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
+                                  EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'ikdh32gz' /* Question 1/3 */,
@@ -537,10 +553,10 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(8, 12, 8, 0),
+                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                             child: LinearPercentIndicator(
                               percent: 1,
-                              width: MediaQuery.of(context).size.width * 0.96,
+                              width: MediaQuery.of(context).size.width * 0.9,
                               lineHeight: 12,
                               animation: false,
                               progressColor:
@@ -562,8 +578,7 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'rpzx5301' /* On a scale of 1 - 3 how are yo... */,
@@ -592,7 +607,9 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '0';
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '0';
+                                        });
 
                                         context.pushNamed('HomePage');
                                       },
@@ -629,7 +646,9 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '1';
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '1';
+                                        });
 
                                         context.pushNamed('HomePage');
                                       },
@@ -666,7 +685,9 @@ class _QuestionarreWidgetState extends State<QuestionarreWidget> {
                                         40, 10, 40, 10),
                                     child: InkWell(
                                       onTap: () async {
-                                        FFAppState().Q1A = '2';
+                                        FFAppState().update(() {
+                                          FFAppState().Q1A = '2';
+                                        });
 
                                         context.pushNamed('HomePage');
                                       },
