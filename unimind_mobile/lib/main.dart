@@ -3,7 +3,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:unimind_core/unimind_core.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -37,6 +36,7 @@ class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = ThemeMode.system;
   ServerController serverController = Get.put(ServerController());
+  User? user;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
@@ -46,6 +46,15 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _appStateNotifier = AppStateNotifier();
     _router = createRouter(_appStateNotifier);
+
+    if (FFAppState().token != "") {
+      serverController.userController.getByIdThunk(id: FFAppState().userId);
+      user = serverController.userController.userX.value;
+      if (user?.isArchived == true) {
+        _appStateNotifier.update(user!);
+        _appStateNotifier.stopShowingSplashImage();
+      }
+    }
   }
 
   void setLocale(String language) {

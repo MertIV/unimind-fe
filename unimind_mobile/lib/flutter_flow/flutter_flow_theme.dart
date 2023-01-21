@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FlutterFlowTheme {
+abstract class FlutterFlowTheme {
   static FlutterFlowTheme of(BuildContext context) {
     return LightModeTheme();
   }

@@ -66,7 +66,8 @@ message VerificationRequest{
 
 message VerificationResponse{
     string token = 1;
-    string error = 2;
+    string user_id = 2;
+    string error = 3;
 }
 
 message FcmTokenRequest{
@@ -77,6 +78,7 @@ message FcmTokenRequest{
 service LoginService{
     rpc Login(LoginRequest) returns (LoginResponse);
     rpc LoginVerification(VerificationRequest) returns (VerificationResponse);
+    rpc Logout(IdRequest) returns (StringResponse);
 }
 
 service UserService{
@@ -85,7 +87,7 @@ service UserService{
     rpc RegisterVerification(VerificationRequest) returns (VerificationResponse);
     rpc Update(UserRequest) returns (User);
     rpc Delete(IdRequest) returns (StringResponse);
-    rpc Archive(IdRequest) returns (StringResponse);
-    rpc Recover(IdRequest) returns (StringResponse);
+    // rpc Archive(IdRequest) returns (StringResponse);
+    // rpc Recover(IdRequest) returns (StringResponse);
     rpc SetFcmToken(FcmTokenRequest) returns (StringResponse);
 }

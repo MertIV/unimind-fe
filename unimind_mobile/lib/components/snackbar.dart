@@ -5,7 +5,7 @@ import 'package:unimind_mobile/style/_style_exporter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void callSnackBar(String message, String body, String snackType) {
-  var theme = FlutterFlowTheme();
+  var theme = LightModeTheme();
   Get.snackbar(
     message,
     body,

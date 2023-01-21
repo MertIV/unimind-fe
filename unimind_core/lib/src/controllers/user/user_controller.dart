@@ -1,22 +1,20 @@
 import 'package:grpc/grpc.dart';
 import 'package:unimind_core/src/config/server_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:unimind_core/unimind_core.dart';
 
 import '../_controller_import.dart';
-import 'user_controller_mixin.dart';
 
-class UserController extends GetxController with UserControllerMixin {
+class UserController extends GetxController {
   var userServiceClient = UserServiceClient(GrpcClientSingleton().client);
+  Rx<User> userX = User().obs;
 
-  @override
-  void onInit() {
-    ever(userListX, (dynamic _) {
-      runFilter();
-    });
-    ever(filterTextX, (dynamic _) {
-      runFilter();
-    });
-    super.onInit();
+  void setUser(User paramUser) {
+    this.userX.value = paramUser;
+  }
+
+  void clearUser() {
+    this.userX.value = User();
   }
 
   Future<void> getByIdThunk({required String id}) async {
@@ -27,24 +25,56 @@ class UserController extends GetxController with UserControllerMixin {
           metadata: ServerConfig.metadata,
         ),
       );
-      addOrUpdate(user: user);
+      setUser(user);
     } catch (e) {}
   }
 
-  Future<String> registerVerificationEmailThunk({required String email}) async {
+  Future<String> registerVerificationEmailThunk(
+      {required String email,
+      required String code,
+      Function()? onSuccess,
+      Function(String)? onError}) async {
     try {
-      VerificationResponse response = await userServiceClient
-          .registerVerification(VerificationRequest()..email = email);
+      VerificationResponse response =
+          await userServiceClient.registerVerification(VerificationRequest()
+            ..email = email
+            ..code = code);
+
+      if (response.token != "") {
+        savePreferences(response.userId, response.token);
+        LoginController loginController = Get.find();
+        loginController.setUser(this.userX.value);
+        loginController.setToken(response.token);
+        loginController.setLoginState(LoginState.LOGGED);
+
+        if (userX.value.type == UserType.PSYCHIATRIST) {
+          // _startDoctorServer();
+          // settingsX.value =
+          //     await CacheService.getUserSettings(userX.value.userId);
+        } else if (userX.value.type == UserType.PATIENT) {
+          // _startPatientServer();
+        }
+        onSuccess?.call();
+      } else {
+        onError?.call(response.error);
+      }
+      LoginController loginController = Get.find();
+      loginController.setToken(response.token);
       return response.token;
     } catch (e) {
       return "Email ile eşleşen kullanıcı bulunamadı!";
     }
   }
 
-  Future<String> registerVerificationPhoneThunk({required String phone}) async {
+  Future<String> registerVerificationPhoneThunk(
+      {required String phone, required String code}) async {
     try {
-      VerificationResponse response = await userServiceClient
-          .registerVerification(VerificationRequest()..phone = phone);
+      VerificationResponse response =
+          await userServiceClient.registerVerification(VerificationRequest()
+            ..phone = phone
+            ..code = code);
+      LoginController loginController = Get.find();
+      loginController.setToken(response.token);
       return response.token;
     } catch (e) {
       return "Telefon ile eşleşen kullanıcı bulunamadı!";
@@ -61,7 +91,7 @@ class UserController extends GetxController with UserControllerMixin {
       User reqUser = user.deepCopy();
       LoginResponse response =
           await userServiceClient.register(UserRequest()..user = reqUser);
-      //addOrUpdate(user: response);
+      setUser(user);
       if (isSavePreference) {
         savePreferences(user.email, user.phone);
       }
@@ -83,7 +113,7 @@ class UserController extends GetxController with UserControllerMixin {
           metadata: ServerConfig.metadata,
         ),
       );
-      addOrUpdate(user: response);
+      setUser(response);
       onSuccess?.call(response);
     } catch (e) {
       onError?.call();
@@ -102,7 +132,7 @@ class UserController extends GetxController with UserControllerMixin {
           metadata: ServerConfig.metadata,
         ),
       );
-      delete(user: user);
+      clearUser();
       onSuccess?.call(user);
     } catch (e) {
       onError?.call();

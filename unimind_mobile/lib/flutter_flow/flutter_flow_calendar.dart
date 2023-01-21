@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:unimind_core/unimind_core.dart';
 
 DateTime kFirstDay = DateTime(1970, 1, 1);
 DateTime kLastDay = DateTime(2100, 1, 1);
-
-extension DateTimeExtension on DateTime {
-  DateTime get startOfDay => DateTime(year, month, day);
-
-  DateTime get endOfDay => DateTime(year, month, day, 23, 59);
-}
 
 bool isSameDay(DateTime? a, DateTime? b) {
   if (a == null || b == null) {

@@ -25,6 +25,10 @@ class LoginServiceClient extends $grpc.Client {
           ($0.VerificationRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.VerificationResponse.fromBuffer(value));
+  static final _$logout = $grpc.ClientMethod<$1.IdRequest, $1.StringResponse>(
+      '/LoginService/Logout',
+      ($1.IdRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.StringResponse.fromBuffer(value));
 
   LoginServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -40,6 +44,11 @@ class LoginServiceClient extends $grpc.Client {
       $0.VerificationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$loginVerification, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.StringResponse> logout($1.IdRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$logout, request, options: options);
   }
 }
 
@@ -63,6 +72,13 @@ abstract class LoginServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $0.VerificationRequest.fromBuffer(value),
             ($0.VerificationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.IdRequest, $1.StringResponse>(
+        'Logout',
+        logout_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.IdRequest.fromBuffer(value),
+        ($1.StringResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.LoginResponse> login_Pre(
@@ -76,10 +92,17 @@ abstract class LoginServiceBase extends $grpc.Service {
     return loginVerification(call, await request);
   }
 
+  $async.Future<$1.StringResponse> logout_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.IdRequest> request) async {
+    return logout(call, await request);
+  }
+
   $async.Future<$0.LoginResponse> login(
       $grpc.ServiceCall call, $0.LoginRequest request);
   $async.Future<$0.VerificationResponse> loginVerification(
       $grpc.ServiceCall call, $0.VerificationRequest request);
+  $async.Future<$1.StringResponse> logout(
+      $grpc.ServiceCall call, $1.IdRequest request);
 }
 
 class UserServiceClient extends $grpc.Client {
@@ -104,14 +127,6 @@ class UserServiceClient extends $grpc.Client {
       ($core.List<$core.int> value) => $0.User.fromBuffer(value));
   static final _$delete = $grpc.ClientMethod<$1.IdRequest, $1.StringResponse>(
       '/UserService/Delete',
-      ($1.IdRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $1.StringResponse.fromBuffer(value));
-  static final _$archive = $grpc.ClientMethod<$1.IdRequest, $1.StringResponse>(
-      '/UserService/Archive',
-      ($1.IdRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $1.StringResponse.fromBuffer(value));
-  static final _$recover = $grpc.ClientMethod<$1.IdRequest, $1.StringResponse>(
-      '/UserService/Recover',
       ($1.IdRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.StringResponse.fromBuffer(value));
   static final _$setFcmToken =
@@ -149,16 +164,6 @@ class UserServiceClient extends $grpc.Client {
   $grpc.ResponseFuture<$1.StringResponse> delete($1.IdRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delete, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$1.StringResponse> archive($1.IdRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$archive, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$1.StringResponse> recover($1.IdRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$recover, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.StringResponse> setFcmToken(
@@ -209,20 +214,6 @@ abstract class UserServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.IdRequest.fromBuffer(value),
         ($1.StringResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.IdRequest, $1.StringResponse>(
-        'Archive',
-        archive_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $1.IdRequest.fromBuffer(value),
-        ($1.StringResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.IdRequest, $1.StringResponse>(
-        'Recover',
-        recover_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $1.IdRequest.fromBuffer(value),
-        ($1.StringResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.FcmTokenRequest, $1.StringResponse>(
         'SetFcmToken',
         setFcmToken_Pre,
@@ -258,16 +249,6 @@ abstract class UserServiceBase extends $grpc.Service {
     return delete(call, await request);
   }
 
-  $async.Future<$1.StringResponse> archive_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.IdRequest> request) async {
-    return archive(call, await request);
-  }
-
-  $async.Future<$1.StringResponse> recover_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.IdRequest> request) async {
-    return recover(call, await request);
-  }
-
   $async.Future<$1.StringResponse> setFcmToken_Pre(
       $grpc.ServiceCall call, $async.Future<$0.FcmTokenRequest> request) async {
     return setFcmToken(call, await request);
@@ -280,10 +261,6 @@ abstract class UserServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.VerificationRequest request);
   $async.Future<$0.User> update($grpc.ServiceCall call, $0.UserRequest request);
   $async.Future<$1.StringResponse> delete(
-      $grpc.ServiceCall call, $1.IdRequest request);
-  $async.Future<$1.StringResponse> archive(
-      $grpc.ServiceCall call, $1.IdRequest request);
-  $async.Future<$1.StringResponse> recover(
       $grpc.ServiceCall call, $1.IdRequest request);
   $async.Future<$1.StringResponse> setFcmToken(
       $grpc.ServiceCall call, $0.FcmTokenRequest request);

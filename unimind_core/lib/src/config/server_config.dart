@@ -1,8 +1,10 @@
 class ServerConfig {
   static String token = "";
+  static String device_id = "";
   static String verificationCode = "";
   static Map<String, String> get metadata {
     return {
+      "device-id": device_id,
       "x-auth-token": token,
     };
   }

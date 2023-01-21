@@ -5,6 +5,7 @@ import 'package:unimind_core/src/controllers/other/server_controller.dart';
 import 'package:unimind_core/src/enums/_enum_exporter.dart';
 import 'package:unimind_core/src/services/cache_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:unimind_core/unimind_core.dart';
 
 import '../_controller_import.dart';
 
@@ -14,7 +15,6 @@ class LoginController extends GetxController {
   Rx<AppSettings> settingsX = AppSettings.initial().obs;
 
   RxString tokenX = "".obs;
-  RxString verificationCodeX = "".obs;
   RxString loginErrorX = "".obs;
 
   Rx<LoginState> loginStateX = LoginState.NOT_STARTED.obs;
@@ -31,11 +31,6 @@ class LoginController extends GetxController {
     this.tokenX.value = paramToken;
   }
 
-  void setVerificationCode(String paramCode) {
-    ServerConfig.verificationCode = paramCode;
-    this.verificationCodeX.value = paramCode;
-  }
-
   String get getToken {
     return ServerConfig.token;
   }
@@ -50,7 +45,7 @@ class LoginController extends GetxController {
 
   //Thunk Actions
   Future<void> login({
-    Function(User)? onSuccess,
+    Function()? onSuccess,
     Function(User)? onExpiration,
     Function(String?)? onFail,
     bool isFacebook = false,
@@ -75,64 +70,58 @@ class LoginController extends GetxController {
       }
 
       if (response.message != "Code is sent to user") {
-        Get.back();
+        // Get.back();
         return;
       }
+      onSuccess?.call();
     } on GrpcError catch (e) {
       print("Login failed");
       setLoginError("Login Failed");
       setLoginState(LoginState.FAILED);
-      Get.back();
       onFail?.call(e.message);
     }
   }
 
   Future<void> loginVerification(
-      {required String verificationCode, Function(String)? onError}) async {
-    VerificationResponse response;
-    response = await loginServiceClient
-        .loginVerification(VerificationRequest()..code = verificationCode);
+      {required String email,
+      required String code,
+      Function()? onSuccess,
+      Function(String)? onError}) async {
+    try {
+      VerificationResponse response;
+      response =
+          await loginServiceClient.loginVerification(VerificationRequest()
+            ..code = code
+            ..email = email);
 
-    if (response.token != "") {
-      savePreferences(userX.value.email, userX.value.phone);
-      //setUser(response.user..email = actualPass);
-      setToken(response.token);
+      if (response.token != "") {
+        savePreferences(response.userId, response.token);
+        UserController userController = Get.find();
+        userController.getByIdThunk(id: response.userId);
+        setUser(userController.userX.value);
+        setToken(response.token);
+        setLoginState(LoginState.LOGGED);
 
-      if (userX.value.type == UserType.PSYCHIATRIST) {
-        // _startDoctorServer();
-        settingsX.value =
-            await CacheService.getUserSettings(userX.value.userId);
-      } else if (userX.value.type == UserType.PATIENT) {
-        // _startPatientServer();
+        if (userX.value.type == UserType.PSYCHIATRIST) {
+          // _startDoctorServer();
+          settingsX.value =
+              await CacheService.getUserSettings(userX.value.userId);
+        } else if (userX.value.type == UserType.PATIENT) {
+          // _startPatientServer();
+        }
+        onSuccess?.call();
+      } else {
+        onError?.call(response.error);
       }
-
-      onError?.call(response.error);
+    } catch (e) {
+      //write to log
     }
   }
 
-  void savePreferences(String email, String phone) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setString("email", email);
-    sharedPreferences.setString("phone", phone);
-    sharedPreferences.setString("logged", "true");
-  }
-
-  void getPreferences(
-      {required TextEditingController emailController,
-      required TextEditingController phoneController}) async {
-    SharedPreferences sharedPreferences;
-    sharedPreferences = await SharedPreferences.getInstance();
-
-    emailController.text = sharedPreferences.getString("email") ?? "";
-    phoneController.text = sharedPreferences.getString("phone") ?? "";
-
-    emailController.selection = TextSelection.fromPosition(
-        TextPosition(offset: emailController.text.length));
-    phoneController.selection = TextSelection.fromPosition(
-        TextPosition(offset: phoneController.text.length));
-
-    userX.value.email = emailController.text;
-    userX.value.phone = phoneController.text;
+  void savePreferences(String userId, String token) async {
+      FFAppState().userId = userId;
+      FFAppState().token = token;
+    }
   }
 
   // void _startDoctorServer() async {

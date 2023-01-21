@@ -5,3 +5,4 @@ export 'package:unimind_core/src/enums/fetch_state.dart';
 export 'package:unimind_core/src/models/grpc/_dart_gen_exporter.dart';
 export 'package:unimind_core/src/grpc_client/grpc_client_singleton.dart';
 export 'package:unimind_core/src/models/_model_exporter.dart';
+export 'app_state.dart';

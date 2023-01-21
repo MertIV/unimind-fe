@@ -149,12 +149,13 @@ const VerificationResponse$json = const {
   '1': 'VerificationResponse',
   '2': const [
     const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 9, '10': 'error'},
+    const {'1': 'user_id', '3': 2, '4': 1, '5': 9, '10': 'userId'},
+    const {'1': 'error', '3': 3, '4': 1, '5': 9, '10': 'error'},
   ],
 };
 
 /// Descriptor for `VerificationResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List verificationResponseDescriptor = $convert.base64Decode('ChRWZXJpZmljYXRpb25SZXNwb25zZRIUCgV0b2tlbhgBIAEoCVIFdG9rZW4SFAoFZXJyb3IYAiABKAlSBWVycm9y');
+final $typed_data.Uint8List verificationResponseDescriptor = $convert.base64Decode('ChRWZXJpZmljYXRpb25SZXNwb25zZRIUCgV0b2tlbhgBIAEoCVIFdG9rZW4SFwoHdXNlcl9pZBgCIAEoCVIGdXNlcklkEhQKBWVycm9yGAMgASgJUgVlcnJvcg==');
 @$core.Deprecated('Use fcmTokenRequestDescriptor instead')
 const FcmTokenRequest$json = const {
   '1': 'FcmTokenRequest',

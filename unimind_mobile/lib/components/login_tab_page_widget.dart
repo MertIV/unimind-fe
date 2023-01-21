@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:unimind_mobile/components/snackbar.dart';
 
 class LoginTabPageWidget extends StatefulWidget {
   const LoginTabPageWidget({Key? key}) : super(key: key);
@@ -14,14 +17,18 @@ class LoginTabPageWidget extends StatefulWidget {
 }
 
 class _LoginTabPageWidgetState extends State<LoginTabPageWidget> {
+  // UserController userController = Get.find();
+  LoginController loginController = Get.find();
   TextEditingController? emailLoginController;
   TextEditingController? phoneLoginController;
 
   @override
   void initState() {
     super.initState();
-    emailLoginController = TextEditingController();
-    phoneLoginController = TextEditingController();
+    emailLoginController =
+        TextEditingController(text: loginController.userX.value.email);
+    phoneLoginController =
+        TextEditingController(text: loginController.userX.value.phone);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -49,6 +56,9 @@ class _LoginTabPageWidgetState extends State<LoginTabPageWidget> {
                 controller: emailLoginController,
                 autofocus: true,
                 obscureText: false,
+                onChanged: (value) {
+                  loginController.userX.value.onEmailChanged(value);
+                },
                 decoration: InputDecoration(
                   hintText: FFLocalizations.of(context).getText(
                     'uzourdy0' /* E-mail */,
@@ -164,18 +174,7 @@ class _LoginTabPageWidgetState extends State<LoginTabPageWidget> {
           ),
           FFButtonWidget(
             onPressed: () async {
-              if (Navigator.of(context).canPop()) {
-                context.pop();
-              }
-              context.pushNamed(
-                'VerificationPin',
-                queryParams: {
-                  'loginOrRegister': serializeParam(
-                    1.0,
-                    ParamType.double,
-                  ),
-                }.withoutNulls,
-              );
+              _handleLogin();
             },
             text: FFLocalizations.of(context).getText(
               '4nro2jjz' /* Giriş Yap */,
@@ -304,6 +303,31 @@ class _LoginTabPageWidgetState extends State<LoginTabPageWidget> {
           ),
         ],
       ),
+    );
+  }
+
+  void _handleLogin() {
+    // Get.dialog(LoadingWidget());
+    loginController.login(
+      email: emailLoginController?.text,
+      onSuccess: () {
+        if (Navigator.of(context).canPop()) {
+          context.pop();
+        }
+        context.pushNamed(
+          'VerificationPin',
+          queryParams: {
+            'loginOrRegister': serializeParam(
+              1.0,
+              ParamType.double,
+            ),
+          }.withoutNulls,
+        );
+      },
+      onFail: (message) {
+        Get.back();
+        callSnackBar("İşlem Başarısız", message!, SnackType.NEGATIVE);
+      },
     );
   }
 }

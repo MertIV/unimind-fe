@@ -5,8 +5,8 @@ import '../_controller_import.dart';
 import 'push_notification_controller.dart';
 
 class ServerController extends GetxController {
-  LoginController loginController = Get.put(LoginController());
   UserController userController = Get.put(UserController());
+  LoginController loginController = Get.put(LoginController());
   WebSocketController webSocketController = Get.put(WebSocketController());
   PushNotificationController pushNotificationController =
       Get.put(PushNotificationController());
@@ -25,7 +25,7 @@ class ServerController extends GetxController {
     } else if (webSocketMessage.operation == "Delete") {
       switch (webSocketMessage.type) {
         case "User":
-          userController.delete(user: User()..userId = webSocketMessage.data);
+          userController.clearUser();
           break;
         default:
       }

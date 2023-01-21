@@ -14,21 +14,22 @@ class GrpcClientSingleton {
   factory GrpcClientSingleton() => _singleton;
 
   GrpcClientSingleton._internal() {
-    client = ClientChannel(
-      SERVER_IP,
-      port: 4242,
-      options: ChannelOptions(
+    client = ClientChannel('10.0.2.2',
+        port: 4242,
+        options:
+            const ChannelOptions(credentials: ChannelCredentials.insecure())
+        // options: ChannelOptions(
         // credentials: ClientCertificateChannelCredentials(utf8.encode(CertificateConstants.caCert),
         //     utf8.encode(CertificateConstants.caKey), utf8.encode(CertificateConstants.clientCert)),
-        credentials: ChannelCredentials.secure(
-          certificates: utf8.encode(CertificateConstants.caCert),
-          onBadCertificate: (certificate, host) {
-            return host == "$SERVER_IP:4242";
-          },
-        ),
-        idleTimeout: Duration(minutes: 40),
-      ),
-    );
+        // credentials: ChannelCredentials.secure(
+        //   certificates: utf8.encode(CertificateConstants.caCert),
+        //   onBadCertificate: (certificate, host) {
+        //     return host == "$SERVER_IP:4242";
+        //   },
+        //   ),
+        //   idleTimeout: Duration(minutes: 40),
+        // ),
+        );
   }
 }
 

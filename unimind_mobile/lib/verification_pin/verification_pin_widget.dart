@@ -5,6 +5,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:unimind_mobile/components/snackbar.dart';
 
 class VerificationPinWidget extends StatefulWidget {
   const VerificationPinWidget({
@@ -19,6 +20,9 @@ class VerificationPinWidget extends StatefulWidget {
 }
 
 class _VerificationPinWidgetState extends State<VerificationPinWidget> {
+  LoginController loginController = Get.find();
+  UserController userController = Get.find();
+
   TextEditingController? pinCodeController;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -137,11 +141,7 @@ class _VerificationPinWidgetState extends State<VerificationPinWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 44),
               child: FFButtonWidget(
                 onPressed: () async {
-                  if (widget.loginOrRegister == 1.0) {
-                    context.pushNamed('HomePage');
-                  } else {
-                    context.pushNamed('Questionarre');
-                  }
+                  _handleVerification();
                 },
                 text: FFLocalizations.of(context).getText(
                   'jrfu90a8' /* Doğrula & Devam et */,
@@ -167,5 +167,38 @@ class _VerificationPinWidgetState extends State<VerificationPinWidget> {
         ),
       ),
     );
+  }
+
+  void _handleVerification() {
+    // Get.dialog(LoadingWidget());
+    if (widget.loginOrRegister == 1.0) {
+      loginController.loginVerification(
+          email: loginController.userX.value.email,
+          code: pinCodeController!.text,
+          onSuccess: () {
+            if (widget.loginOrRegister == 1.0) {
+              context.pushNamed('HomePage');
+            } else {
+              context.pushNamed('Questionarre');
+            }
+          },
+          onError: (message) {
+            callSnackBar("İşlem Başarısız", message, SnackType.NEGATIVE);
+          });
+    } else if (widget.loginOrRegister == 2.0) {
+      userController.registerVerificationEmailThunk(
+          email: userController.userX.value.email,
+          code: pinCodeController!.text,
+          onSuccess: () {
+            if (widget.loginOrRegister == 1.0) {
+              context.pushNamed('HomePage');
+            } else {
+              context.pushNamed('Questionarre');
+            }
+          },
+          onError: (message) {
+            callSnackBar("İşlem Başarısız", message, SnackType.NEGATIVE);
+          });
+    }
   }
 }
