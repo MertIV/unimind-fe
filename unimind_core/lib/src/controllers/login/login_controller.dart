@@ -119,9 +119,26 @@ class LoginController extends GetxController {
   }
 
   void savePreferences(String userId, String token) async {
-      FFAppState().userId = userId;
-      FFAppState().token = token;
-    }
+    FFAppState().userId = userId;
+    FFAppState().token = token;
+  }
+
+  void getPreferences(
+      {required TextEditingController emailController,
+      required TextEditingController phoneController}) async {
+    SharedPreferences sharedPreferences;
+    sharedPreferences = await SharedPreferences.getInstance();
+
+    emailController.text = sharedPreferences.getString("email") ?? "";
+    phoneController.text = sharedPreferences.getString("phone") ?? "";
+
+    emailController.selection = TextSelection.fromPosition(
+        TextPosition(offset: emailController.text.length));
+    phoneController.selection = TextSelection.fromPosition(
+        TextPosition(offset: phoneController.text.length));
+
+    userX.value.email = emailController.text;
+    userX.value.phone = phoneController.text;
   }
 
   // void _startDoctorServer() async {

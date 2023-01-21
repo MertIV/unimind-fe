@@ -48,6 +48,7 @@ class _MyAppState extends State<MyApp> {
     _router = createRouter(_appStateNotifier);
 
     if (FFAppState().token != "") {
+      ServerConfig.token = FFAppState().token;
       serverController.userController.getByIdThunk(id: FFAppState().userId);
       user = serverController.userController.userX.value;
       if (user?.isArchived == true) {
