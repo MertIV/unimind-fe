@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:grpc/grpc.dart';
-import 'package:unimind_core/src/constants/certificate_constants.dart';
 
 class GrpcClientSingleton {
   late ClientChannel client;

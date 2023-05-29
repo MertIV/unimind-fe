@@ -14,11 +14,13 @@ class SignInModel extends PageModel {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     loginTabPageModel = createModel(context, () => LoginTabPageModel());
     signupTabPageModel = createModel(context, () => SignupTabPageModel());
   }
 
+  @override
   void dispose() {
     loginTabPageModel.dispose();
     signupTabPageModel.dispose();

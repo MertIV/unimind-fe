@@ -22,8 +22,10 @@ class SignupTabPageModel extends PageModel {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     emailSignupController?.dispose();
     phoneSignupController?.dispose();

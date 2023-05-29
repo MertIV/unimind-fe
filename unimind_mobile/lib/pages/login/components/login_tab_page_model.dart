@@ -13,8 +13,10 @@ class LoginTabPageModel extends PageModel {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     emailLoginController?.dispose();
     phoneLoginController?.dispose();

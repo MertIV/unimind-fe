@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 
 import '/../index.dart';
 import '/widgets/navbar.dart';
@@ -27,19 +25,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, _) => OnboardingWidget(),
+      errorBuilder: (context, _) => const OnboardingWidget(),
       routes: [
         AppRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => OnboardingWidget(),
+          builder: (context, _) => const OnboardingWidget(),
           routes: [
             AppRoute(
               name: 'HomePage',
               path: 'homePage',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'HomePage')
-                  : OnboardingWidget(),
+                  ? const NavBarPage(initialPage: 'HomePage')
+                  : const OnboardingWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -198,5 +196,5 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }

@@ -24,43 +24,43 @@ class AppState extends ChangeNotifier {
 
   List<String> _CreditCard = ['CreditCardNumber', 'ExpirationDate', 'CVC'];
   List<String> get CreditCard => _CreditCard;
-  set CreditCard(List<String> _value) {
-    _CreditCard = _value;
-    prefs.setStringList('ff_CreditCard', _value);
+  set CreditCard(List<String> value) {
+    _CreditCard = value;
+    prefs.setStringList('ff_CreditCard', value);
   }
 
-  void addToCreditCard(String _value) {
-    _CreditCard.add(_value);
+  void addToCreditCard(String value) {
+    _CreditCard.add(value);
     prefs.setStringList('ff_CreditCard', _CreditCard);
   }
 
-  void removeFromCreditCard(String _value) {
-    _CreditCard.remove(_value);
+  void removeFromCreditCard(String value) {
+    _CreditCard.remove(value);
     prefs.setStringList('ff_CreditCard', _CreditCard);
   }
 
-  void removeAtIndexFromCreditCard(int _index) {
-    _CreditCard.removeAt(_index);
+  void removeAtIndexFromCreditCard(int index) {
+    _CreditCard.removeAt(index);
     prefs.setStringList('ff_CreditCard', _CreditCard);
   }
 
   void updateCreditCardAtIndex(
-    int _index,
+    int index,
     Function(String) updateFn,
   ) {
-    updateFn(_CreditCard[_index]);
+    updateFn(_CreditCard[index]);
     prefs.setStringList('ff_CreditCard', _CreditCard);
   }
 
   int _questionIndex = 0;
   int get questionIndex => _questionIndex;
-  set questionIndex(int _value) {
-    _questionIndex = _value;
+  set questionIndex(int value) {
+    _questionIndex = value;
   }
 
   String _Q1A = '';
   String get Q1A => _Q1A;
-  set Q1A(String _value) {
-    _Q1A = _value;
+  set Q1A(String value) {
+    _Q1A = value;
   }
 }

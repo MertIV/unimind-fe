@@ -1,5 +1,4 @@
 import 'package:grpc/grpc.dart';
-import 'package:unimind_core/src/config/server_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unimind_core/unimind_core.dart';
 

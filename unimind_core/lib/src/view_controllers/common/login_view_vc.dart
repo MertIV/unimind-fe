@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:unimind_core/unimind_core.dart';
-import 'package:http/http.dart' as http;
 
 class LoginViewVC extends GetxController {
   ServerController serverController = Get.find();

@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '/index.dart';
 
 class NavBarPage extends StatefulWidget {
-  NavBarPage({Key? key, this.initialPage, this.page}) : super(key: key);
+  const NavBarPage({Key? key, this.initialPage, this.page}) : super(key: key);
 
   final String? initialPage;
   final Widget? page;
@@ -30,10 +30,10 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'HomePage': OnboardingWidget(),
-      'meetings': OnboardingWidget(),
-      'Chat': OnboardingWidget(),
-      'Profile': OnboardingWidget(),
+      'HomePage': const OnboardingWidget(),
+      'meetings': const OnboardingWidget(),
+      'Chat': const OnboardingWidget(),
+      'Profile': const OnboardingWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -52,11 +52,11 @@ class _NavBarPageState extends State<NavBarPage> {
           }),
           backgroundColor: Colors.white,
           selectedItemColor: UnimindMainTheme.of(context).primary,
-          unselectedItemColor: Color(0x8A000000),
+          unselectedItemColor: const Color(0x8A000000),
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.home,

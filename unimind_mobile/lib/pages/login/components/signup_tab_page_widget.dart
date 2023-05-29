@@ -51,12 +51,12 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
     context.watch<AppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(24.0, 10.0, 24.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 10.0, 24.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 10.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 10.0),
             child: TextFormField(
               controller: _model.emailSignupController,
               autofocus: true,
@@ -65,28 +65,28 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 hintText: 'E-mail',
                 hintStyle: UnimindMainTheme.of(context).bodySmall,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedErrorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
@@ -95,7 +95,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 filled: true,
                 fillColor: UnimindMainTheme.of(context).secondaryBackground,
                 contentPadding:
-                    EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                    const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
               ),
               style: UnimindMainTheme.of(context).bodyMedium,
               validator:
@@ -103,7 +103,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
             child: TextFormField(
               controller: _model.phoneSignupController,
               autofocus: true,
@@ -112,28 +112,28 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 hintText: 'Telefon numarası',
                 hintStyle: UnimindMainTheme.of(context).bodySmall,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedErrorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
@@ -142,7 +142,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 filled: true,
                 fillColor: UnimindMainTheme.of(context).secondaryBackground,
                 contentPadding:
-                    EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                    const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
               ),
               style: UnimindMainTheme.of(context).bodyMedium,
               validator:
@@ -150,7 +150,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
             child: TextFormField(
               controller: _model.nameSignupController,
               autofocus: true,
@@ -159,28 +159,28 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 hintText: 'Ad Soyad',
                 hintStyle: UnimindMainTheme.of(context).bodySmall,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedErrorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
@@ -189,7 +189,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 filled: true,
                 fillColor: UnimindMainTheme.of(context).secondaryBackground,
                 contentPadding:
-                    EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                    const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
               ),
               style: UnimindMainTheme.of(context).bodyMedium,
               validator:
@@ -197,7 +197,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 32.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 32.0),
             child: TextFormField(
               controller: _model.birthdateSignupController,
               autofocus: true,
@@ -206,28 +206,28 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 hintText: 'Doğum Tarihi (GG/AA/YYYY)',
                 hintStyle: UnimindMainTheme.of(context).bodySmall,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedErrorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
@@ -236,7 +236,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 filled: true,
                 fillColor: UnimindMainTheme.of(context).secondaryBackground,
                 contentPadding:
-                    EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                    const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
               ),
               style: UnimindMainTheme.of(context).bodyMedium,
               validator: _model.birthdateSignupControllerValidator
@@ -267,33 +267,33 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
             options: ButtonOptions(
               width: 230.0,
               height: 50.0,
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: Colors.white,
               textStyle: UnimindMainTheme.of(context).titleSmall.override(
                     fontFamily: 'Poppins',
                     color: UnimindMainTheme.of(context).primary,
                   ),
               elevation: 3.0,
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.transparent,
                 width: 1.0,
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 8.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 8.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Text(
                     'Kayıt olmak için hesaplarınızı kullanın',
                     style: UnimindMainTheme.of(context).bodyMedium.override(
                           fontFamily: 'Lexend Deca',
-                          color: Color(0x98FFFFFF),
+                          color: const Color(0x98FFFFFF),
                           fontSize: 14.0,
                           fontWeight: FontWeight.normal,
                         ),
@@ -303,7 +303,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 8.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 8.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -313,7 +313,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                   height: 50.0,
                   decoration: BoxDecoration(
                     color: UnimindMainTheme.of(context).primaryText,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 5.0,
                         color: Color(0x3314181B),
@@ -322,7 +322,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                     ],
                     shape: BoxShape.circle,
                   ),
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: FaIcon(
                     FontAwesomeIcons.google,
                     color: UnimindMainTheme.of(context).secondaryBackground,
@@ -334,7 +334,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                   height: 50.0,
                   decoration: BoxDecoration(
                     color: UnimindMainTheme.of(context).primaryText,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 5.0,
                         color: Color(0x3314181B),
@@ -343,7 +343,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                     ],
                     shape: BoxShape.circle,
                   ),
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: FaIcon(
                     FontAwesomeIcons.facebookF,
                     color: UnimindMainTheme.of(context).secondaryBackground,

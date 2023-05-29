@@ -1,8 +1,4 @@
 import 'package:grpc/grpc.dart';
-import 'package:ntp/ntp.dart';
-import 'package:unimind_core/src/config/server_config.dart';
-import 'package:unimind_core/src/controllers/other/server_controller.dart';
-import 'package:unimind_core/src/enums/_enum_exporter.dart';
 import 'package:unimind_core/src/services/cache_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unimind_core/unimind_core.dart';
@@ -119,8 +115,8 @@ class LoginController extends GetxController {
   }
 
   void savePreferences(String userId, String token) async {
-    FFAppState().userId = userId;
-    FFAppState().token = token;
+    FFAppStateOLd().userId = userId;
+    FFAppStateOLd().token = token;
   }
 
   void getPreferences(

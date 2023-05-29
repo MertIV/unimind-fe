@@ -1,9 +1,6 @@
-import 'dart:convert';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
-
-const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class RegisterUserCall {
   static Future<ApiCallResponse> call({
@@ -62,22 +59,4 @@ class ApiPagingParams {
   @override
   String toString() =>
       'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
-}
-
-String _serializeList(List? list) {
-  list ??= <String>[];
-  try {
-    return json.encode(list);
-  } catch (_) {
-    return '[]';
-  }
-}
-
-String _serializeJson(dynamic jsonVar) {
-  jsonVar ??= {};
-  try {
-    return json.encode(jsonVar);
-  } catch (_) {
-    return '{}';
-  }
 }

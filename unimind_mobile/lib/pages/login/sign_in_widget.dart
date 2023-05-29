@@ -59,7 +59,8 @@ class _SignInWidgetState extends State<SignInWidget> {
             Expanded(
               flex: 1,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -92,16 +93,16 @@ class _SignInWidgetState extends State<SignInWidget> {
                 child: Column(
                   children: [
                     Align(
-                      alignment: Alignment(0.0, 0),
+                      alignment: const Alignment(0.0, 0),
                       child: TabBar(
                         isScrollable: true,
                         labelColor: UnimindMainTheme.of(context).primaryBtnText,
-                        labelPadding: EdgeInsetsDirectional.fromSTEB(
+                        labelPadding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         labelStyle: UnimindMainTheme.of(context).titleMedium,
                         indicatorColor:
                             UnimindMainTheme.of(context).primaryBtnText,
-                        tabs: [
+                        tabs: const [
                           Tab(
                             text: 'Giriş Yap',
                           ),
@@ -118,14 +119,14 @@ class _SignInWidgetState extends State<SignInWidget> {
                             builder: (context) => wrapWithModel(
                               model: _model.loginTabPageModel,
                               updateCallback: () => setState(() {}),
-                              child: LoginTabPageWidget(),
+                              child: const LoginTabPageWidget(),
                             ),
                           ),
                           KeepAliveWidgetWrapper(
                             builder: (context) => wrapWithModel(
                               model: _model.signupTabPageModel,
                               updateCallback: () => setState(() {}),
-                              child: SignupTabPageWidget(),
+                              child: const SignupTabPageWidget(),
                             ),
                           ),
                         ],
