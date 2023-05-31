@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../pages/login/sign_in_widget.dart';
 import '/../index.dart';
-import '/widgets/navbar.dart';
 import 'utils.dart';
 // import 'serialization_util.dart';
 
@@ -33,11 +33,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => const OnboardingWidget(),
           routes: [
             AppRoute(
-              name: 'HomePage',
-              path: 'homePage',
-              builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'HomePage')
-                  : const OnboardingWidget(),
+              name: 'SignIn',
+              path: 'signIn',
+              builder: (context, params) => SignInWidget(
+                tabIndex: params.getParam('tabIndex', ParamType.int),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -196,5 +196,6 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() =>
+      const TransitionInfo(hasTransition: false);
 }
