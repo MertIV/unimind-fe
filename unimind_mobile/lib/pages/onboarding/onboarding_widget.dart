@@ -302,6 +302,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   onPressed: () async {
                     context.pushNamed(
                       'SignIn',
+                      queryParameters: {
+                        'tabIndex': serializeParam(
+                          1,
+                          ParamType.int,
+                        ),
+                      }.withoutNulls,
                     );
                   },
                   text: 'Register',

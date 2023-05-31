@@ -60,7 +60,7 @@ class _SignInWidgetState extends State<SignInWidget> {
             Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -80,68 +80,72 @@ class _SignInWidgetState extends State<SignInWidget> {
                   ),
                 )),
             Expanded(
-              flex: 8,
-              child: DefaultTabController(
-                length: 2,
-                initialIndex: min(
-                    valueOrDefault<int>(
-                      widget.tabIndex,
-                      0,
-                    ),
-                    1),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment(0, 0),
-                      child: TabBar(
-                        isScrollable: true,
-                        labelColor: UnimindMainTheme.of(context).primaryBtnText,
-                        labelPadding:
-                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
-                        labelStyle: UnimindMainTheme.of(context).titleMedium,
-                        indicatorColor:
-                            UnimindMainTheme.of(context).primaryBtnText,
-                        tabs: [
-                          Tab(
-                            text: 'Giriş Yap',
-                          ),
-                          Tab(
-                            text: 'Kayıt Ol',
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: TabBarView(
-                        children: [
-                          KeepAliveWidgetWrapper(
-                            builder: (context) => Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                              child: wrapWithModel(
-                                model: _model.loginTabPageModel,
-                                updateCallback: () => setState(() {}),
-                                child: LoginTabPageWidget(),
+              flex: 6,
+              child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: DefaultTabController(
+                    length: 2,
+                    initialIndex: min(
+                        valueOrDefault<int>(
+                          widget.tabIndex,
+                          0,
+                        ),
+                        1),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: const Alignment(0, 0),
+                          child: TabBar(
+                            isScrollable: true,
+                            labelColor:
+                                UnimindMainTheme.of(context).primaryBtnText,
+                            labelPadding: const EdgeInsetsDirectional.fromSTEB(
+                                24, 0, 24, 0),
+                            labelStyle:
+                                UnimindMainTheme.of(context).titleMedium,
+                            indicatorColor:
+                                UnimindMainTheme.of(context).primaryBtnText,
+                            tabs: const [
+                              Tab(
+                                text: 'Giriş Yap',
                               ),
-                            ),
-                          ),
-                          KeepAliveWidgetWrapper(
-                            builder: (context) => Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                              child: wrapWithModel(
-                                model: _model.signupTabPageModel,
-                                updateCallback: () => setState(() {}),
-                                child: SignupTabPageWidget(),
+                              Tab(
+                                text: 'Kayıt Ol',
                               ),
-                            ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                        Expanded(
+                          child: TabBarView(
+                            children: [
+                              KeepAliveWidgetWrapper(
+                                builder: (context) => Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0, 10, 0, 0),
+                                  child: wrapWithModel(
+                                    model: _model.loginTabPageModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: const LoginTabPageWidget(),
+                                  ),
+                                ),
+                              ),
+                              KeepAliveWidgetWrapper(
+                                builder: (context) => Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0, 10, 0, 0),
+                                  child: wrapWithModel(
+                                    model: _model.signupTabPageModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: const SignupTabPageWidget(),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
+                  )),
             ),
           ],
         ),

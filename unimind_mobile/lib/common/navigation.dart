@@ -69,8 +69,8 @@ extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
-    // ..addAll(params)
-    // ..addAll(queryParams)
+    // ..addAll(parameters)
+    ..addAll(queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo

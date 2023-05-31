@@ -12,10 +12,6 @@ export 'num/max_value.dart';
 export 'num/min_value.dart';
 export 'num/num_input.dart';
 
-export 'string/max_length.dart';
-export 'string/min_length.dart';
-export 'string/no_whitespace.dart';
-export 'string/not_empty.dart';
 export 'string/is_email.dart';
 export 'string/is_username.dart';
 

@@ -46,8 +46,9 @@ class _LoginTabPageWidgetState extends State<LoginTabPageWidget> {
     context.watch<AppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(24, 10, 24, 0),
+      padding: EdgeInsetsDirectional.fromSTEB(24, 20, 24, 0),
       child: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [

@@ -290,6 +290,56 @@ enum ParamType {
   JSON,
 }
 
+String dateTimeRangeToString(DateTimeRange dateTimeRange) {
+  final startStr = dateTimeRange.start.millisecondsSinceEpoch.toString();
+  final endStr = dateTimeRange.end.millisecondsSinceEpoch.toString();
+  return '$startStr|$endStr';
+}
+
+String? serializeParam(
+  dynamic param,
+  ParamType paramType, [
+  bool isList = false,
+]) {
+  try {
+    if (param == null) {
+      return null;
+    }
+    if (isList) {
+      final serializedValues = (param as Iterable)
+          .map((p) => serializeParam(p, paramType, false))
+          .where((p) => p != null)
+          .map((p) => p!)
+          .toList();
+      return json.encode(serializedValues);
+    }
+    switch (paramType) {
+      case ParamType.int:
+        return param.toString();
+      case ParamType.double:
+        return param.toString();
+      case ParamType.String:
+        return param;
+      case ParamType.bool:
+        return param ? 'true' : 'false';
+      case ParamType.DateTime:
+        return (param as DateTime).millisecondsSinceEpoch.toString();
+      case ParamType.DateTimeRange:
+        return dateTimeRangeToString(param as DateTimeRange);
+      case ParamType.Color:
+        return (param as Color).toCssString();
+      case ParamType.JSON:
+        return json.encode(param);
+
+      default:
+        return null;
+    }
+  } catch (e) {
+    print('Error serializing parameter: $e');
+    return null;
+  }
+}
+
 dynamic deserializeParam<T>(
   String? param,
   ParamType paramType,
