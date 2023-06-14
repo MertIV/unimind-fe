@@ -1,33 +1,4 @@
-import 'api_manager.dart';
-
-export 'api_manager.dart' show ApiCallResponse;
-
-class RegisterUserCall {
-  static Future<ApiCallResponse> call({
-    String? birthdate = '',
-    String? email = '',
-    String? phone = '',
-    String? name = '',
-  }) {
-    return ApiManager.instance.makeApiCall(
-      callName: 'RegisterUser',
-      apiUrl: 'http://127.0.0.1:3050/api/users/register',
-      callType: ApiCallType.POST,
-      headers: {},
-      params: {
-        'name': name,
-        'phone': phone,
-        'email': email,
-        'birthdate': birthdate,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
+import '../common/api_manager.dart';
 
 class GetSuggestedSessionsCall {
   static Future<ApiCallResponse> call() {

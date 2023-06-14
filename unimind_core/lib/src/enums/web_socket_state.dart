@@ -1,1 +1,0 @@
-enum WebSocketState {CONNECTED,NOT_CONNECTED}

@@ -1,4 +1,3 @@
-import 'package:grpc/grpc.dart';
 import 'package:unimind_core/src/services/cache_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unimind_core/unimind_core.dart';
@@ -14,9 +13,6 @@ class LoginController extends GetxController {
   RxString loginErrorX = "".obs;
 
   Rx<LoginState> loginStateX = LoginState.NOT_STARTED.obs;
-
-  var loginServiceClient = LoginServiceClient(GrpcClientSingleton().client);
-
   //Actions
   void setUser(User paramUser) {
     this.userX.value = paramUser;
@@ -39,102 +35,95 @@ class LoginController extends GetxController {
     this.loginStateX.value = paramLoginState;
   }
 
-  //Thunk Actions
-  Future<void> login({
-    Function()? onSuccess,
-    Function(User)? onExpiration,
-    Function(String?)? onFail,
-    bool isFacebook = false,
-    String? email,
-    String? generatedID,
-  }) async {
-    try {
-      print("Logging in");
-      setLoginState(LoginState.LOGGING);
-      LoginResponse response;
-      // if (isFacebook) {
-      //   response = await loginServiceClient.facebookLogin(FacebookLoginRequest()
-      //     ..email = email!
-      //     ..generatedId = generatedID!);
-      // } else {
-      if (userX.value.email != "") {
-        response = await loginServiceClient
-            .login(LoginRequest()..email = userX.value.email);
-      } else {
-        response = await loginServiceClient
-            .login(LoginRequest()..phone = userX.value.phone);
-      }
+  // //Thunk Actions
+  // Future<void> login({
+  //   Function()? onSuccess,
+  //   Function(User)? onExpiration,
+  //   Function(String?)? onFail,
+  //   bool isFacebook = false,
+  //   String? email,
+  //   String? generatedID,
+  // }) async {
+  //   try {
+  //     print("Logging in");
+  //     setLoginState(LoginState.LOGGING);
+  //     LoginResponse response;
+  //     // if (isFacebook) {
+  //     //   response = await loginServiceClient.facebookLogin(FacebookLoginRequest()
+  //     //     ..email = email!
+  //     //     ..generatedId = generatedID!);
+  //     // } else {
+  //     if (userX.value.email != "") {
+  //       response = await loginServiceClient
+  //           .login(LoginRequest()..email = userX.value.email);
+  //     } else {
+  //       response = await loginServiceClient
+  //           .login(LoginRequest()..phone = userX.value.phone);
+  //     }
 
-      if (response.message != "Code is sent to user") {
-        // Get.back();
-        return;
-      }
-      onSuccess?.call();
-    } on GrpcError catch (e) {
-      print("Login failed");
-      setLoginError("Login Failed");
-      setLoginState(LoginState.FAILED);
-      onFail?.call(e.message);
-    }
-  }
+  //     if (response.message != "Code is sent to user") {
+  //       // Get.back();
+  //       return;
+  //     }
+  //     onSuccess?.call();
+  //   } on GrpcError catch (e) {
+  //     print("Login failed");
+  //     setLoginError("Login Failed");
+  //     setLoginState(LoginState.FAILED);
+  //     onFail?.call(e.message);
+  //   }
+  // }
 
-  Future<void> loginVerification(
-      {required String email,
-      required String code,
-      Function()? onSuccess,
-      Function(String)? onError}) async {
-    try {
-      VerificationResponse response;
-      response =
-          await loginServiceClient.loginVerification(VerificationRequest()
-            ..code = code
-            ..email = email);
+  // Future<void> loginVerification(
+  //     {required String email,
+  //     required String code,
+  //     Function()? onSuccess,
+  //     Function(String)? onError}) async {
+  //   try {
+  //     VerificationResponse response;
+  //     response =
+  //         await loginServiceClient.loginVerification(VerificationRequest()
+  //           ..code = code
+  //           ..email = email);
 
-      if (response.token != "") {
-        savePreferences(response.userId, response.token);
-        UserController userController = Get.find();
-        userController.getByIdThunk(id: response.userId);
-        setUser(userController.userX.value);
-        setToken(response.token);
-        setLoginState(LoginState.LOGGED);
+  //     if (response.token != "") {
+  //       savePreferences(response.userId, response.token);
+  //       UserController userController = Get.find();
+  //       userController.getByIdThunk(id: response.userId);
+  //       setUser(userController.userX.value);
+  //       setToken(response.token);
+  //       setLoginState(LoginState.LOGGED);
 
-        if (userX.value.type == UserType.PSYCHIATRIST) {
-          // _startDoctorServer();
-          settingsX.value =
-              await CacheService.getUserSettings(userX.value.userId);
-        } else if (userX.value.type == UserType.PATIENT) {
-          // _startPatientServer();
-        }
-        onSuccess?.call();
-      } else {
-        onError?.call(response.error);
-      }
-    } catch (e) {
-      //write to log
-    }
-  }
+  //       if (userX.value.type == UserType.PSYCHIATRIST) {
+  //         // _startDoctorServer();
+  //         settingsX.value =
+  //             await CacheService.getUserSettings(userX.value.userId);
+  //       } else if (userX.value.type == UserType.PATIENT) {
+  //         // _startPatientServer();
+  //       }
+  //       onSuccess?.call();
+  //     } else {
+  //       onError?.call(response.error);
+  //     }
+  //   } catch (e) {
+  //     //write to log
+  //   }
+  // }
 
-  void savePreferences(String userId, String token) async {
-    FFAppStateOLd().userId = userId;
-    FFAppStateOLd().token = token;
-  }
+  // void savePreferences(String userId, String token) async {
+  //   FFAppStateOLd().userId = userId;
+  //   FFAppStateOLd().token = token;
+  // }
 
-  void getPreferences(
-      {required TextEditingController emailController,
-      required TextEditingController phoneController}) async {
+  void getPreferences({required TextEditingController emailController}) async {
     SharedPreferences sharedPreferences;
     sharedPreferences = await SharedPreferences.getInstance();
 
     emailController.text = sharedPreferences.getString("email") ?? "";
-    phoneController.text = sharedPreferences.getString("phone") ?? "";
 
     emailController.selection = TextSelection.fromPosition(
         TextPosition(offset: emailController.text.length));
-    phoneController.selection = TextSelection.fromPosition(
-        TextPosition(offset: phoneController.text.length));
-
     userX.value.email = emailController.text;
-    userX.value.phone = phoneController.text;
   }
 
   // void _startDoctorServer() async {
@@ -175,12 +164,12 @@ class LoginController extends GetxController {
   //   serverController.pushNotificationController.setFcmTokenThunk();
   // }
 
-  Future<void> setNewSettings(AppSettings settings, Function callback) async {
-    bool res =
-        await CacheService.setDoctorSettings(settings, userX.value.userId);
-    if (res) {
-      settingsX.value = settings;
-      callback.call();
-    }
-  }
+  // Future<void> setNewSettings(AppSettings settings, Function callback) async {
+  //   bool res =
+  //       await CacheService.setDoctorSettings(settings, userX.value.userId);
+  //   if (res) {
+  //     settingsX.value = settings;
+  //     callback.call();
+  //   }
+  // }
 }

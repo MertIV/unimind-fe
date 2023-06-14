@@ -4,9 +4,8 @@ extension UserListExtension on List<User> {
   List<User> filterByFilterText({required String text}) {
     return this
         .where((element) =>
-            element.userId.toLowerCase().contains(text.toLowerCase()) ||
-            element.email.toLowerCase().contains(text.toLowerCase()) ||
-            element.fullname.toLowerCase().contains(text.toLowerCase()))
+            element.name!.toLowerCase().contains(text.toLowerCase()) ||
+            element.email!.toLowerCase().contains(text.toLowerCase()))
         .toList();
   }
 }
