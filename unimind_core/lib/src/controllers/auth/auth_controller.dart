@@ -1,12 +1,12 @@
-import 'package:unimind_core/src/services/cache_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unimind_core/unimind_core.dart';
 
 import '../_controller_import.dart';
 
-class LoginController extends GetxController {
+class AuthController extends GetxController {
   Rx<User> userX = User().obs;
   Rx<User> signUpUserX = User().obs;
+
   Rx<AppSettings> settingsX = AppSettings.initial().obs;
 
   RxString tokenX = "".obs;
@@ -33,6 +33,34 @@ class LoginController extends GetxController {
 
   void setLoginState(LoginState paramLoginState) {
     this.loginStateX.value = paramLoginState;
+  }
+
+  Future<void> registerThunk({
+    required String name,
+    required String email,
+    required String birthDate,
+    Function(int)? onSuccess,
+    Function(String?)? onError,
+    bool isSavePreference = true,
+  }) async {
+    try {
+      User user = User(
+          name: name, email: email, birthDate: DateTime.tryParse(birthDate));
+      var response = await RegisterUserCall.call(user: user);
+      if (response.succeeded) {
+        var responseUser = userModelFromJson(response.jsonBody['user']);
+        setUser(responseUser[0]);
+        if (isSavePreference) {
+          savePreferences(user.email);
+        }
+        onSuccess?.call(response.statusCode);
+      } else {
+        throw Exception(
+            response.statusCode.toString() + " Code : Error on Register Call");
+      }
+    } catch (e) {
+      onError?.call(e.toString());
+    }
   }
 
   // //Thunk Actions

@@ -12,33 +12,6 @@ class UserController extends GetxController {
     this.userX.value = User();
   }
 
-  Future<void> registerThunk({
-    required String name,
-    required String email,
-    required String birthDate,
-    Function(int)? onSuccess,
-    Function(String?)? onError,
-    bool isSavePreference = true,
-  }) async {
-    try {
-      User user = User(name: name,email: email, birthDate: DateTime.tryParse(birthDate));
-      var response = await RegisterUserCall.call(user: user);
-      if (response.statusCode == 200) {
-        var responseUser = userModelFromJson(response.jsonBody);
-        setUser(responseUser[0]);
-        if (isSavePreference) {
-          savePreferences(user.email);
-        }
-        onSuccess?.call(response.statusCode);
-      } else {
-        throw Exception(
-            response.statusCode.toString() + " Code : Error on Register Call");
-      }
-    } catch (e) {
-      onError?.call(e.toString());
-    }
-  }
-
   // Future<void> getByIdThunk({required String id}) async {
   //   try {
   //     User user = await userServiceClient.getByID(

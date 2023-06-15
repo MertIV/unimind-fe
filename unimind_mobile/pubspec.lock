@@ -283,14 +283,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_login_facebook:
-    dependency: transitive
-    description:
-      name: flutter_login_facebook
-      sha256: "05ced7a4297a761859729c512727c0d25f01bd40c38a27e0c203f6b86be8d055"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.8.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -476,14 +468,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  list_ext:
-    dependency: transitive
-    description:
-      name: list_ext
-      sha256: a38869a6911830f39ace7534972d01e573e17917955b26215e54d5797eb8d5cd
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.6"
   logging:
     dependency: transitive
     description:
@@ -492,14 +476,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  matcher:
-    dependency: transitive
-    description:
-      name: matcher
-      sha256: "1803e76e6653768d64ed8ff2e1e67bea3ad4b923eb5c56a295c3e634bad5960e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.12.16"
   material_color_utilities:
     dependency: transitive
     description:
@@ -708,14 +684,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      sha256: b1c1ac5ce6688d77f65f3375a9abb9319b3cb32486bdc7a1e0fdf004d7ba4e47
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.2.1"
   rfc_6901:
     dependency: transitive
     description:

@@ -13,7 +13,7 @@ extension UserActionsExtension on User {
     this.isEmailVerified = isEmailVerified;
   }
 
-  void onBirthDateSelected(DateTime value) {
-    this.birthDate = value;
+  void onBirthDateSelected(String value) {
+    this.birthDate = DateTime.tryParse(value);
   }
 }

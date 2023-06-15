@@ -15,36 +15,12 @@ class SignupTabPageWidget extends StatefulWidget {
   const SignupTabPageWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SignupTabPageWidgetState createState() => _SignupTabPageWidgetState();
 }
 
 class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
-  late SignupTabPageModel _model;
-
-  @override
-  void setState(VoidCallback callback) {
-    super.setState(callback);
-    _model.onUpdate();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _model = createModel(context, () => SignupTabPageModel());
-
-    _model.emailSignupController ??= TextEditingController();
-    _model.phoneSignupController ??= TextEditingController();
-    _model.nameSignupController ??= TextEditingController();
-    _model.birthdateSignupController ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    _model.maybeDispose();
-
-    super.dispose();
-  }
+  SignUpViewVC vc = Get.put(SignUpViewVC());
 
   @override
   Widget build(BuildContext context) {
@@ -62,103 +38,106 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(15, 0, 15, 10),
                   child: TextFormField(
-                    controller: _model.emailSignupController,
-                    autofocus: true,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: 'E-mail',
-                      hintStyle: UnimindMainTheme.of(context).bodySmall,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
+                      onChanged:
+                          vc.authController.signUpUserX.value.onEmailChanged,
+                      controller: vc.emailController,
+                      autofocus: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: 'E-mail',
+                        hintStyle: UnimindMainTheme.of(context).bodySmall,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
+                        errorBorder: UnderlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
+                        focusedErrorBorder: UnderlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        borderRadius: BorderRadius.circular(10),
+                        filled: true,
+                        fillColor:
+                            UnimindMainTheme.of(context).secondaryBackground,
+                        contentPadding:
+                            const EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
                       ),
-                      filled: true,
-                      fillColor:
-                          UnimindMainTheme.of(context).secondaryBackground,
-                      contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
-                    ),
-                    style: UnimindMainTheme.of(context).bodyMedium,
-                    validator: _model.emailSignupControllerValidator
-                        .asValidator(context),
-                  ),
+                      style: UnimindMainTheme.of(context).bodyMedium,
+                      validator: vc.emailSignupControllerValidator
+                          .asValidator(context)),
                 ),
+                // Padding(
+                //   padding: const EdgeInsetsDirectional.fromSTEB(15, 10, 15, 10),
+                //   child: TextFormField(
+                //     controller: _model.phoneSignupController,
+                //     autofocus: true,
+                //     obscureText: false,
+                //     decoration: InputDecoration(
+                //       hintText: 'Telefon numarası',
+                //       hintStyle: UnimindMainTheme.of(context).bodySmall,
+                //       enabledBorder: UnderlineInputBorder(
+                //         borderSide: const BorderSide(
+                //           color: Color(0x00000000),
+                //           width: 1,
+                //         ),
+                //         borderRadius: BorderRadius.circular(10),
+                //       ),
+                //       focusedBorder: UnderlineInputBorder(
+                //         borderSide: const BorderSide(
+                //           color: Color(0x00000000),
+                //           width: 1,
+                //         ),
+                //         borderRadius: BorderRadius.circular(10),
+                //       ),
+                //       errorBorder: UnderlineInputBorder(
+                //         borderSide: const BorderSide(
+                //           color: Color(0x00000000),
+                //           width: 1,
+                //         ),
+                //         borderRadius: BorderRadius.circular(10),
+                //       ),
+                //       focusedErrorBorder: UnderlineInputBorder(
+                //         borderSide: const BorderSide(
+                //           color: Color(0x00000000),
+                //           width: 1,
+                //         ),
+                //         borderRadius: BorderRadius.circular(10),
+                //       ),
+                //       filled: true,
+                //       fillColor:
+                //           UnimindMainTheme.of(context).secondaryBackground,
+                //       contentPadding:
+                //           const EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                //     ),
+                //     style: UnimindMainTheme.of(context).bodyMedium,
+                //     validator: _model.phoneSignupControllerValidator
+                //         .asValidator(context),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(15, 10, 15, 10),
                   child: TextFormField(
-                    controller: _model.phoneSignupController,
-                    autofocus: true,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: 'Telefon numarası',
-                      hintStyle: UnimindMainTheme.of(context).bodySmall,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      filled: true,
-                      fillColor:
-                          UnimindMainTheme.of(context).secondaryBackground,
-                      contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
-                    ),
-                    style: UnimindMainTheme.of(context).bodyMedium,
-                    validator: _model.phoneSignupControllerValidator
-                        .asValidator(context),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(15, 10, 15, 10),
-                  child: TextFormField(
-                    controller: _model.nameSignupController,
+                    onChanged:
+                        vc.authController.signUpUserX.value.onNameChanged,
+                    controller: vc.nameController,
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
@@ -199,18 +178,20 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                           const EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
                     ),
                     style: UnimindMainTheme.of(context).bodyMedium,
-                    validator: _model.nameSignupControllerValidator
-                        .asValidator(context),
+                    validator:
+                        vc.nameSignupControllerValidator.asValidator(context),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(15, 10, 15, 0),
                   child: TextFormField(
-                    controller: _model.birthdateSignupController,
+                    onChanged:
+                        vc.authController.signUpUserX.value.onBirthDateSelected,
+                    controller: vc.birthDateController,
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: 'Doğum Tarihi (GG/AA/YYYY)',
+                      hintText: 'Doğum Tarihi (YYYY-GG-AA)',
                       hintStyle: UnimindMainTheme.of(context).bodySmall,
                       enabledBorder: UnderlineInputBorder(
                         borderSide: const BorderSide(
@@ -247,7 +228,7 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                           const EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
                     ),
                     style: UnimindMainTheme.of(context).bodyMedium,
-                    validator: _model.birthdateSignupControllerValidator
+                    validator: vc.birthDateSignupControllerValidator
                         .asValidator(context),
                   ),
                 ),
@@ -255,33 +236,22 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: ButtonWidget(
                     onPressed: () async {
-                      _model.apiResult0l3 = await RegisterUserCall.call(
-                        email: _model.emailSignupController.text,
-                        phone: _model.phoneSignupController.text,
-                        name: _model.nameSignupController.text,
-                        birthdate: _model.birthdateSignupController.text,
-                      );
-                      if ((_model.apiResult0l3?.succeeded ?? true)) {
-                        context.pushNamed(
-                          'VerificationPin',
-                          //   queryParams: {
-                          //     'loginOrRegister': serializeParam(
-                          //       2.0,
-                          //       ParamType.double,
-                          //     ),
-                          //   }.withoutNulls,
-                        );
-                      } else {
-                        context.pushNamed('VerificationPin'
-                            //   queryParams: {
-                            //     'loginOrRegister': serializeParam(
-                            //       2.0,
-                            //       ParamType.double,
-                            //     ),
-                            //   }.withoutNulls,
-                            );
-                      }
-
+                      await vc.authController.registerThunk(
+                          name: vc.nameController.text,
+                          email: vc.emailController.text,
+                          birthDate: vc.birthDateController.text,
+                          onSuccess: (code) {
+                          context.pushNamed(
+                          'VerificationPin', queryParameters: {
+                            'loginOrRegister': serializeParam(
+                              2.0,
+                              ParamType.double,
+                            ),
+                          }.withoutNulls,);
+                          },
+                          onError: (error) {
+                            //toast return error
+                          } );
                       setState(() {});
                     },
                     text: 'Hesap Oluştur',
@@ -316,8 +286,8 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                         height: 50,
                         decoration: BoxDecoration(
                           color: UnimindMainTheme.of(context).primaryText,
-                          boxShadow: [
-                            const BoxShadow(
+                          boxShadow: const [
+                            BoxShadow(
                               blurRadius: 5,
                               color: Color(0x3314181B),
                               offset: Offset(0, 2),
@@ -338,8 +308,8 @@ class _SignupTabPageWidgetState extends State<SignupTabPageWidget> {
                         height: 50,
                         decoration: BoxDecoration(
                           color: UnimindMainTheme.of(context).primaryText,
-                          boxShadow: [
-                            const BoxShadow(
+                          boxShadow: const [
+                            BoxShadow(
                               blurRadius: 5,
                               color: Color(0x3314181B),
                               offset: Offset(0, 2),
